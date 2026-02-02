@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love 💝 | Valentine's Surprise</title>
+    <title>Valentine's Week with Boeky 💖 | 7 Days of Love</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== CUTE BACKGROUND ===== */
+        /* ===== ROMANTIC BACKGROUND & VARIABLES ===== */
+        :root {
+            --rose-pink: #ff66b2;
+            --chocolate: #7B3F00;
+            --teddy-brown: #8B4513;
+            --valentine-red: #ff3366;
+            --pastel-blue: #b3e0ff;
+            --pastel-pink: #ffccdd;
+            --pastel-yellow: #fff0b3;
+            --pastel-green: #ccffcc;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,315 +25,16 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', 'Comic Neue', cursive;
-            background: linear-gradient(135deg, #ffe6f2 0%, #fff0f7 100%);
+            font-family: 'Comic Sans MS', 'Comic Neue', 'Segoe UI', cursive;
+            background: linear-gradient(135deg, #ffe6ee 0%, #fff0f5 25%, #ffe6f2 50%, #f0f8ff 100%);
             color: #660033;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* ===== BIG CHARACTER FROM YOUR PICTURE ===== */
-        .character-container {
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            transition: left 0.5s linear, bottom 0.5s linear;
-        }
-
-        .character {
-            width: 300px;
-            height: 400px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        /* CHARACTER BODY - PINK LIKE YOUR IMAGE */
-        .character-body {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 200px;
-            background: #ff66b3;
-            border-radius: 100px 100px 80px 80px;
-            box-shadow: 
-                0 15px 30px rgba(255, 102, 179, 0.3),
-                inset 0 -10px 20px rgba(255, 51, 153, 0.2);
-            animation: bodyBounce 0.8s infinite alternate;
-        }
-
-        @keyframes bodyBounce {
-            from { transform: translateX(-50%) translateY(0); }
-            to { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        /* CHARACTER FACE - WHITE CIRCLE */
-        .character-face {
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 50%;
-            border: 5px solid #ff3399;
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* EYES - BIG LIKE IN YOUR PICTURE */
-        .character-eyes {
-            position: absolute;
-            top: 35px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .eye {
-            width: 25px;
-            height: 35px;
-            background: #333;
-            border-radius: 50%;
-            position: relative;
-            animation: blink 3s infinite;
-        }
-
-        .eye::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        @keyframes blink {
-            0%, 45%, 55%, 100% { height: 35px; }
-            50% { height: 5px; }
-        }
-
-        /* MOUTH - SMILING */
-        .character-mouth {
-            position: absolute;
-            top: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 25px;
-            background: #ff3399;
-            border-radius: 0 0 25px 25px;
-            transition: all 0.3s;
-        }
-
-        /* ARMS - WAVING */
-        .character-arms {
-            position: absolute;
-            top: 80px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            z-index: 1;
-        }
-
-        .arm {
-            width: 60px;
-            height: 15px;
-            background: #ff66b3;
-            border-radius: 8px;
-            animation: armWave 1s infinite alternate;
-        }
-
-        .arm.left { 
-            transform-origin: right center;
-            animation-delay: 0.5s;
-        }
-
-        .arm.right { 
-            transform-origin: left center;
-        }
-
-        @keyframes armWave {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(30deg); }
-        }
-
-        /* LEGS - WALKING */
-        .character-legs {
-            position: absolute;
-            bottom: -40px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .leg {
-            width: 20px;
-            height: 60px;
-            background: #ff0066;
-            border-radius: 10px;
-            animation: legWalk 0.5s infinite alternate;
-        }
-
-        .leg.left { animation-delay: 0.25s; }
-
-        @keyframes legWalk {
-            from { transform: translateY(0); }
-            to { transform: translateY(-20px); }
-        }
-
-        /* HEART ABOVE HEAD */
-        .character-heart {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 4rem;
-            color: #ff0066;
-            animation: floatHeart 2s infinite;
-            z-index: 3;
-            filter: drop-shadow(0 5px 10px rgba(255, 0, 102, 0.3));
-        }
-
-        @keyframes floatHeart {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
-        }
-
-        /* ===== SPEECH BUBBLE (EXACTLY LIKE YOUR IMAGE) ===== */
-        .speech-bubble {
-            position: absolute;
-            bottom: 450px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: #660033;
-            padding: 25px 30px;
-            border-radius: 30px;
-            width: 350px;
-            box-shadow: 
-                0 15px 35px rgba(255, 102, 179, 0.3),
-                0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 5px solid #ff66b3;
-            display: none;
-            font-size: 1.4rem;
-            line-height: 1.5;
-            text-align: center;
-            font-weight: bold;
-            z-index: 1001;
-            animation: bubbleFloat 3s infinite;
-        }
-
-        @keyframes bubbleFloat {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 20px 15px 0;
-            border-style: solid;
-            border-color: white transparent transparent transparent;
-        }
-
-        .speech-bubble::before {
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 25px 18px 0;
-            border-style: solid;
-            border-color: #ff66b3 transparent transparent transparent;
-        }
-
-        /* BUTTONS - EXACTLY LIKE YOUR IMAGE */
-        .bubble-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-
-        .bubble-btn {
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Comic Sans MS', cursive;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .bubble-btn.yes {
-            background: linear-gradient(45deg, #4CAF50, #66BB6A);
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .bubble-btn.no {
-            background: linear-gradient(45deg, #f44336, #ef5350);
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .bubble-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-        }
-
-        .bubble-btn:active {
-            transform: translateY(0);
-        }
-
-        /* ===== WELCOME MESSAGE ===== */
-        .welcome-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            border: 5px dashed #ff66b3;
-            box-shadow: 0 20px 50px rgba(255, 102, 179, 0.2);
-            max-width: 600px;
-        }
-
-        .welcome-title {
-            font-size: 3.5rem;
-            color: #ff0066;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0 #ffb3d9;
-        }
-
-        .welcome-text {
-            font-size: 1.5rem;
-            color: #993366;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* ===== HEARTS BACKGROUND ===== */
-        .floating-hearts {
+        /* ===== ANIMATED BACKGROUND ELEMENTS ===== */
+        .background-elements {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -329,408 +42,1106 @@
             z-index: -1;
         }
 
-        .heart {
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 102, 179, 0.4);
+            animation: floatUp 15s infinite linear;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.6;
+            animation: floatSlow 25s infinite linear;
+        }
+
+        .chocolate {
             position: absolute;
             font-size: 2rem;
-            color: rgba(255, 102, 179, 0.3);
-            animation: float 20s infinite linear;
+            opacity: 0;
+            animation: chocolateFall 20s infinite linear;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
+        .rose {
+            position: absolute;
+            font-size: 2.2rem;
+            color: #ff3366;
+            opacity: 0.5;
+            animation: sway 18s infinite ease-in-out;
         }
 
-        /* ===== RESPONSIVE ===== */
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes floatSlow {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(180deg); opacity: 0; }
+        }
+
+        @keyframes chocolateFall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(30px) rotate(5deg); }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(255,240,245,0.9));
+            border-radius: 30px;
+            border: 8px double var(--valentine-red);
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #ff3366 0%, #ff66b2 20%, 
+                #ff9966 40%, #ffcc00 60%, 
+                #66cc66 80%, #3399ff 100%);
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            color: var(--valentine-red);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0 #ffb3d9, 6px 6px 0 rgba(255, 51, 102, 0.2);
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 3px 3px 0 #ffb3d9, 6px 6px 0 rgba(255, 51, 102, 0.2); }
+            100% { text-shadow: 3px 3px 0 #ffb3d9, 6px 6px 20px rgba(255, 51, 102, 0.4); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #993366;
+            margin-bottom: 25px;
+        }
+
+        /* ===== VALENTINE'S WEEK CALENDAR ===== */
+        .valentine-week {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid transparent;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .day-card.active {
+            border-color: var(--valentine-red);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.4);
+        }
+
+        .day-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--valentine-red);
+            margin-bottom: 5px;
+        }
+
+        .day-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .day-icon {
+            font-size: 2rem;
+            margin-top: 10px;
+            height: 40px;
+        }
+
+        /* Day-specific colors */
+        .day-card[data-day="1"] { border-top: 8px solid #ff3366; }
+        .day-card[data-day="2"] { border-top: 8px solid #ff66b2; }
+        .day-card[data-day="3"] { border-top: 8px solid #7B3F00; }
+        .day-card[data-day="4"] { border-top: 8px solid #8B4513; }
+        .day-card[data-day="5"] { border-top: 8px solid #3399ff; }
+        .day-card[data-day="6"] { border-top: 8px solid #ff9966; }
+        .day-card[data-day="7"] { border-top: 8px solid #ff3366; }
+        .day-card[data-day="8"] { border-top: 8px solid #ff0066; }
+
+        /* ===== BOEKY CHARACTER CONTAINER ===== */
+        .boeky-container {
+            position: relative;
+            height: 500px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            max-width: 800px;
+        }
+
+        .boeky-scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            border: 5px dashed rgba(255, 102, 179, 0.3);
+            overflow: hidden;
+        }
+
+        /* ===== BOEKY CHARACTER ===== */
+        .boeky {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 400px;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        /* Boeky Body - Pink like your image */
+        .boeky-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            background: var(--rose-pink);
+            border-radius: 90px 90px 70px 70px;
+            box-shadow: 
+                inset 0 -15px 20px rgba(255, 51, 153, 0.3),
+                0 10px 25px rgba(255, 102, 179, 0.4);
+            z-index: 2;
+            animation: boekyBounce 2s infinite alternate;
+        }
+
+        @keyframes boekyBounce {
+            0% { transform: translateX(-50%) translateY(0); }
+            100% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Boeky Face */
+        .boeky-face {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            border: 5px solid #ff3399;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .boeky-eyes {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .boeky-eye {
+            width: 20px;
+            height: 30px;
+            background: #333;
+            border-radius: 50%;
+            position: relative;
+            animation: boekyBlink 3s infinite;
+        }
+
+        .boeky-eye::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @keyframes boekyBlink {
+            0%, 45%, 55%, 100% { height: 30px; }
+            50% { height: 5px; }
+        }
+
+        .boeky-mouth {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            background: #ff3399;
+            border-radius: 0 0 20px 20px;
+            transition: all 0.3s;
+        }
+
+        /* Boeky Arms */
+        .boeky-arms {
+            position: absolute;
+            top: 70px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+            z-index: 1;
+        }
+
+        .boeky-arm {
+            width: 50px;
+            height: 12px;
+            background: var(--rose-pink);
+            border-radius: 6px;
+        }
+
+        /* Boeky Legs */
+        .boeky-legs {
+            position: absolute;
+            bottom: -35px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .boeky-leg {
+            width: 15px;
+            height: 50px;
+            background: #ff0066;
+            border-radius: 8px;
+        }
+
+        /* Boeky Heart */
+        .boeky-heart {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: var(--valentine-red);
+            z-index: 4;
+            filter: drop-shadow(0 5px 10px rgba(255, 0, 102, 0.3));
+            animation: heartFloat 3s infinite alternate;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        /* ===== DAY-SPECIFIC BOEKY ACCESSORIES ===== */
+        .boeky-accessory {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Roses for Rose Day */
+        .boeky-roses {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: roseSway 4s infinite ease-in-out;
+        }
+
+        @keyframes roseSway {
+            0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+        }
+
+        /* Chocolate for Chocolate Day */
+        .boeky-chocolate {
+            position: absolute;
+            top: 50px;
+            right: -30px;
+            font-size: 2.5rem;
+            animation: chocolateFloat 3s infinite alternate;
+        }
+
+        @keyframes chocolateFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Teddy for Teddy Day */
+        .boeky-teddy {
+            position: absolute;
+            bottom: 60px;
+            left: -40px;
+            font-size: 3.5rem;
+            animation: teddyHug 4s infinite alternate;
+        }
+
+        @keyframes teddyHug {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* ===== DAY CONTENT DISPLAY ===== */
+        .day-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 5px solid var(--valentine-red);
+            box-shadow: 0 20px 40px rgba(255, 51, 102, 0.2);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-title {
+            font-size: 2.5rem;
+            color: var(--valentine-red);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px dashed #ffb3d9;
+            padding-bottom: 15px;
+        }
+
+        .day-message {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #660033;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .day-special {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .special-item {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .special-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .special-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* ===== INTERACTIVE BUTTONS ===== */
+        .interactive-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .action-btn i {
+            font-size: 1.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-rose {
+            background: linear-gradient(45deg, #ff3366, #ff66b2);
+            color: white;
+        }
+
+        .btn-chocolate {
+            background: linear-gradient(45deg, #7B3F00, #A0522D);
+            color: white;
+        }
+
+        .btn-teddy {
+            background: linear-gradient(45deg, #8B4513, #D2691E);
+            color: white;
+        }
+
+        .btn-love {
+            background: linear-gradient(45deg, #ff3366, #ff0066);
+            color: white;
+        }
+
+        /* ===== SCENE ELEMENTS ===== */
+        .scene-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .tulip-garden {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .tulip {
+            font-size: 2.5rem;
+            color: #ff66b2;
+            animation: tulipGrow 5s infinite alternate;
+        }
+
+        @keyframes tulipGrow {
+            0% { transform: translateY(10px) scale(0.9); }
+            100% { transform: translateY(0) scale(1.1); }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #993366;
+            font-size: 1.1rem;
+            border-top: 3px dashed #ffb3d9;
+        }
+
+        .footer-heart {
+            color: var(--valentine-red);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
-            .character {
-                width: 250px;
-                height: 350px;
+            .valentine-week {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .character-body {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .character-face {
-                width: 100px;
-                height: 100px;
-                top: 30px;
-            }
-            
-            .speech-bubble {
-                width: 300px;
-                font-size: 1.2rem;
-                bottom: 400px;
-            }
-            
-            .welcome-title {
+            .main-title {
                 font-size: 2.5rem;
+            }
+            
+            .boeky-container {
+                height: 400px;
+            }
+            
+            .boeky {
+                width: 200px;
+                height: 320px;
+            }
+            
+            .boeky-body {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .boeky-face {
+                width: 80px;
+                height: 80px;
+                top: 20px;
+            }
+            
+            .day-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .valentine-week {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .interactive-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
 
         /* ===== SPECIAL EFFECTS ===== */
-        .confetti {
+        .celebration {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .confetti-piece {
+            position: absolute;
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            pointer-events: none;
-            z-index: 999;
+            animation: confettiFall 3s linear forwards;
         }
 
-        .click-effect {
-            position: fixed;
-            font-size: 2rem;
-            pointer-events: none;
-            z-index: 999;
-            animation: pop 1s forwards;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0) rotate(0deg); opacity: 1; }
-            100% { transform: scale(2) rotate(180deg); opacity: 0; }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Hearts Background -->
-    <div class="floating-hearts" id="floatingHearts"></div>
-
-    <!-- Welcome Message -->
-    <div class="welcome-message" id="welcomeMessage">
-        <h1 class="welcome-title">For My Beautiful Valentine! 💕</h1>
-        <p class="welcome-text">
-            Hi my love! This special website is just for you! 💖<br>
-            Look at the cute character below - it has a surprise message for you! 🥰
-        </p>
-        <p style="color: #ff66b3; font-size: 1.2rem; margin-top: 20px;">
-            Click the character to interact with it! 👇
-        </p>
-    </div>
-
-    <!-- BIG Character from your picture -->
-    <div class="character-container" id="characterContainer">
-        <div class="character" id="cuteCharacter">
-            <div class="character-heart">💖</div>
-            <div class="character-body">
-                <div class="character-face">
-                    <div class="character-eyes">
-                        <div class="eye"></div>
-                        <div class="eye"></div>
-                    </div>
-                    <div class="character-mouth"></div>
-                </div>
-                <div class="character-arms">
-                    <div class="arm left"></div>
-                    <div class="arm right"></div>
-                </div>
-            </div>
-            <div class="character-legs">
-                <div class="leg left"></div>
-                <div class="leg right"></div>
-            </div>
-        </div>
+    <!-- Animated Background Elements -->
+    <div class="background-elements" id="backgroundElements"></div>
+    
+    <!-- Celebration Effects -->
+    <div class="celebration" id="celebration"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">Valentine's Week with Boeky 💖</h1>
+            <p class="subtitle">7 Days of Love, Surprises & Sweet Moments</p>
+            <p>Click each day to see Boeky's special surprise for you!</p>
+        </header>
         
-        <!-- Speech Bubble with your exact text -->
-        <div class="speech-bubble" id="speechBubble">
-            <div id="bubbleText">Hey babe, I made a little surprise for you</div>
-            <div class="bubble-buttons" id="bubbleButtons">
-                <button class="bubble-btn yes" id="yesBtn">yes</button>
-                <button class="bubble-btn no" id="noBtn">i'll skip</button>
+        <!-- Valentine's Week Calendar -->
+        <section class="valentine-week" id="valentineWeek">
+            <!-- Days will be generated by JavaScript -->
+        </section>
+        
+        <!-- Boeky Character Scene -->
+        <section class="boeky-container">
+            <div class="boeky-scene" id="boekyScene">
+                <!-- Tulip Garden -->
+                <div class="tulip-garden">
+                    <div class="tulip">🌷</div>
+                    <div class="tulip">🌷</div>
+                    <div class="tulip">🌷</div>
+                    <div class="tulip">🌷</div>
+                    <div class="tulip">🌷</div>
+                </div>
+                
+                <!-- Boeky Character -->
+                <div class="boeky" id="boeky">
+                    <div class="boeky-heart" id="boekyHeart">💖</div>
+                    <div class="boeky-body">
+                        <div class="boeky-face">
+                            <div class="boeky-eyes">
+                                <div class="boeky-eye"></div>
+                                <div class="boeky-eye"></div>
+                            </div>
+                            <div class="boeky-mouth" id="boekyMouth"></div>
+                        </div>
+                        <div class="boeky-arms">
+                            <div class="boeky-arm left"></div>
+                            <div class="boeky-arm right"></div>
+                        </div>
+                    </div>
+                    <div class="boeky-legs">
+                        <div class="boeky-leg left"></div>
+                        <div class="boeky-leg right"></div>
+                    </div>
+                    
+                    <!-- Accessories will be added based on day -->
+                    <div class="boeky-accessory" id="boekyAccessory"></div>
+                </div>
             </div>
-        </div>
+        </section>
+        
+        <!-- Day Content Display -->
+        <section class="day-content" id="dayContent">
+            <!-- Content will be loaded here based on selected day -->
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <span class="footer-heart">❤️</span> for my special someone</p>
+            <p>© Valentine's Week 2024 | Boeky's Love Adventure</p>
+        </footer>
     </div>
 
     <script>
-        // ===== CREATE FLOATING HEARTS =====
-        function createFloatingHearts() {
-            const container = document.getElementById('floatingHearts');
-            for(let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '💖';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.fontSize = `${Math.random() * 30 + 20}px`;
-                heart.style.animationDelay = `${Math.random() * 20}s`;
-                heart.style.animationDuration = `${Math.random() * 25 + 15}s`;
-                container.appendChild(heart);
+        // ===== VALENTINE'S WEEK DATA =====
+        const valentineWeek = [
+            {
+                day: 1,
+                name: "Rose Day",
+                date: "Feb 7",
+                icon: "🌹",
+                color: "#ff3366",
+                message: "Just like every rose has its unique beauty, you have a special place in my heart that no one else can fill. Happy Rose Day, my love!",
+                special: [
+                    { icon: "🌹", text: "Red Roses" },
+                    { icon: "💕", text: "Love Bouquet" },
+                    { icon: "🌸", text: "Pink Roses" }
+                ],
+                boekyAccessory: "🌹🌹🌹",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Send Virtual Rose", icon: "🌹", class: "btn-rose", action: "sendRose" },
+                    { text: "Rose Garden View", icon: "🏞️", class: "btn-rose", action: "showGarden" }
+                ]
+            },
+            {
+                day: 2,
+                name: "Propose Day",
+                date: "Feb 8",
+                icon: "💍",
+                color: "#ff66b2",
+                message: "You are the missing piece I've been searching for my entire life. Will you make me the happiest person and be mine forever?",
+                special: [
+                    { icon: "💍", text: "Promise Ring" },
+                    { icon: "💌", text: "Love Letter" },
+                    { icon: "🎈", text: "Romantic Setup" }
+                ],
+                boekyAccessory: "💍",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Say Yes!", icon: "✅", class: "btn-love", action: "acceptProposal" },
+                    { text: "Read Love Letter", icon: "💌", class: "btn-love", action: "readLetter" }
+                ]
+            },
+            {
+                day: 3,
+                name: "Chocolate Day",
+                date: "Feb 9",
+                icon: "🍫",
+                color: "#7B3F00",
+                message: "Just like chocolate makes everything better, your love sweetens every moment of my life. You're the sweetest treat I could ever ask for!",
+                special: [
+                    { icon: "🍫", text: "Dark Chocolate" },
+                    { icon: "🍬", text: "Assorted Chocolates" },
+                    { icon: "🎁", text: "Chocolate Box" }
+                ],
+                boekyAccessory: "🍫🍫",
+                accessoryClass: "boeky-chocolate",
+                buttons: [
+                    { text: "Virtual Chocolates", icon: "🍫", class: "btn-chocolate", action: "sendChocolate" },
+                    { text: "Chocolate Rain", icon: "🌧️", class: "btn-chocolate", action: "chocolateRain" }
+                ]
+            },
+            {
+                day: 4,
+                name: "Teddy Day",
+                date: "Feb 10",
+                icon: "🧸",
+                color: "#8B4513",
+                message: "This teddy is a symbol of my love - always there to hug you, comfort you, and remind you how much you're loved, even when I'm not physically there.",
+                special: [
+                    { icon: "🧸", text: "Cuddly Teddy" },
+                    { icon: "🎀", text: "Ribbon Bow" },
+                    { icon: "❤️", text: "Heart Patch" }
+                ],
+                boekyAccessory: "🧸",
+                accessoryClass: "boeky-teddy",
+                buttons: [
+                    { text: "Virtual Teddy Hug", icon: "🤗", class: "btn-teddy", action: "teddyHug" },
+                    { text: "Teddy Collection", icon: "🧸", class: "btn-teddy", action: "showTeddies" }
+                ]
+            },
+            {
+                day: 5,
+                name: "Promise Day",
+                date: "Feb 11",
+                icon: "🤝",
+                color: "#3399ff",
+                message: "I promise to stand by you through all seasons of life, to love you more each day, and to make every moment with you magical.",
+                special: [
+                    { icon: "📜", text: "Promise Scroll" },
+                    { icon: "🔒", text: "Lock of Love" },
+                    { icon: "💖", text: "Heart Key" }
+                ],
+                boekyAccessory: "🤝",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Make a Promise", icon: "✍️", class: "btn-love", action: "makePromise" },
+                    { text: "Promise Lock", icon: "🔒", class: "btn-love", action: "lockPromise" }
+                ]
+            },
+            {
+                day: 6,
+                name: "Hug Day",
+                date: "Feb 12",
+                icon: "🤗",
+                color: "#ff9966",
+                message: "A hug is the perfect way to show you care without saying a word. Sending you the warmest, tightest virtual hug today and always!",
+                special: [
+                    { icon: "🤗", text: "Warm Hug" },
+                    { icon: "🫂", text: "Bear Hug" },
+                    { icon: "💕", text: "Love Embrace" }
+                ],
+                boekyAccessory: "🫂",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Send Virtual Hug", icon: "🤗", class: "btn-love", action: "sendHug" },
+                    { text: "Hug Meter", icon: "📊", class: "btn-love", action: "hugMeter" }
+                ]
+            },
+            {
+                day: 7,
+                name: "Kiss Day",
+                date: "Feb 13",
+                icon: "💋",
+                color: "#ff3366",
+                message: "Every kiss with you feels like the first - magical, electric, and filled with love. You make every moment unforgettable.",
+                special: [
+                    { icon: "💋", text: "Sweet Kiss" },
+                    { icon: "😘", text: "Flying Kiss" },
+                    { icon: "💖", text: "Love Kiss" }
+                ],
+                boekyAccessory: "💋",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Virtual Kiss", icon: "💋", class: "btn-love", action: "sendKiss" },
+                    { text: "Kiss Counter", icon: "😘", class: "btn-love", action: "kissCounter" }
+                ]
+            },
+            {
+                day: 8,
+                name: "Valentine's Day",
+                date: "Feb 14",
+                icon: "💝",
+                color: "#ff0066",
+                message: "Happy Valentine's Day, my love! You are my greatest adventure, my deepest love, and my happiest ending. I love you more than words can express.",
+                special: [
+                    { icon: "💝", text: "Gift of Love" },
+                    { icon: "🎉", text: "Celebration" },
+                    { icon: "🥂", text: "Romantic Dinner" }
+                ],
+                boekyAccessory: "💝🎁",
+                accessoryClass: "boeky-roses",
+                buttons: [
+                    { text: "Grand Celebration", icon: "🎉", class: "btn-love", action: "celebrate" },
+                    { text: "Eternal Love", icon: "∞", class: "btn-love", action: "eternalLove" }
+                ]
             }
-        }
-
-        // ===== CHARACTER MESSAGES =====
-        const messages = [
-            "Hey babe, I made a little surprise for you",
-            "you are not allowed to skip ittttt",
-            "Do you want to see something special? 🎁",
-            "I worked really hard on this! 💪",
-            "Please don't skip it! 🥺",
-            "It's made with lots of love! 💖",
-            "Just for you! 🥰",
-            "Will you check it out? 👀"
         ];
 
-        // ===== INITIALIZE =====
+        // ===== INITIALIZE WEBSITE =====
         document.addEventListener('DOMContentLoaded', function() {
-            createFloatingHearts();
-            setupCharacter();
-            startCharacterWalking();
-            showFirstMessage();
+            createBackgroundElements();
+            generateValentineWeek();
+            showDay(1); // Start with Rose Day
             
-            // Hide welcome message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('welcomeMessage').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('welcomeMessage').style.display = 'none';
-                }, 1000);
-            }, 5000);
+            // Add click sound for interactions
+            const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQ=');
+            
+            // Make Boeky interactive
+            document.getElementById('boeky').addEventListener('click', function() {
+                createHearts(5);
+                const currentDay = document.querySelector('.day-card.active').dataset.day;
+                showDayContent(currentDay);
+            });
         });
 
-        // ===== SETUP CHARACTER =====
-        function setupCharacter() {
-            const character = document.getElementById('cuteCharacter');
-            const bubble = document.getElementById('speechBubble');
-            const yesBtn = document.getElementById('yesBtn');
-            const noBtn = document.getElementById('noBtn');
-            const bubbleText = document.getElementById('bubbleText');
-            let messageIndex = 0;
-            let noCount = 0;
-
-            // Character click
-            character.addEventListener('click', function() {
-                // Bounce effect
-                this.style.transform = 'scale(1.05)';
-                setTimeout(() => this.style.transform = '', 300);
-                
-                // Change message
-                messageIndex = (messageIndex + 1) % messages.length;
-                bubbleText.textContent = messages[messageIndex];
-                
-                // Show buttons for first two messages
-                if(messageIndex <= 1) {
-                    document.getElementById('bubbleButtons').style.display = 'flex';
-                } else {
-                    document.getElementById('bubbleButtons').style.display = 'none';
-                }
-                
-                // Show bubble
-                bubble.style.display = 'block';
-                createClickEffect();
-                
-                // Auto-hide after 5 seconds
-                setTimeout(() => {
-                    if(bubble.style.display === 'block' && messageIndex > 1) {
-                        bubble.style.display = 'none';
-                    }
-                }, 5000);
-            });
-
-            // YES button
-            yesBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                bubbleText.textContent = "YAY! Let me show you around! 🎉💖";
-                document.getElementById('bubbleButtons').style.display = 'none';
-                
-                // Celebration
-                createConfetti();
-                createHearts(15);
-                
-                // Happy face
-                const mouth = document.querySelector('.character-mouth');
-                mouth.style.borderRadius = '50%';
-                mouth.style.height = '30px';
-                mouth.style.width = '30px';
-                mouth.style.background = '#ff0066';
-                
-                // Change heart color
-                document.querySelector('.character-heart').style.color = '#4CAF50';
-                
-                // Move character to center
-                const container = document.getElementById('characterContainer');
-                container.style.left = '50%';
-                container.style.bottom = '100px';
-                
-                // Show next message after 2 seconds
-                setTimeout(() => {
-                    bubbleText.textContent = "This website is my Valentine's gift to you! 💝";
-                    setTimeout(() => {
-                        bubble.style.display = 'none';
-                        // Reset face
-                        mouth.style.borderRadius = '0 0 25px 25px';
-                        mouth.style.height = '25px';
-                        mouth.style.width = '50px';
-                        document.querySelector('.character-heart').style.color = '#ff0066';
-                    }, 3000);
-                }, 2000);
-            });
-
-            // NO button
-            noBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                noCount++;
-                
-                const sadMessages = [
-                    "Hey! You can't skip! 😠",
-                    "Please don't skip! 🥺",
-                    "I'll keep asking! 😤",
-                    "Pretty please? 💖",
-                    "You're stuck with me! 😉"
-                ];
-                
-                bubbleText.textContent = noCount > 1 ? sadMessages[Math.min(noCount-2, sadMessages.length-1)] : "you are not allowed to skip ittttt";
-                
-                // Make button move away
-                if(noCount > 1) {
-                    this.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
-                }
-                
-                // Hide button after too many clicks
-                if(noCount > 4) {
-                    this.style.display = 'none';
-                    bubbleText.textContent = "You HAVE to click YES! 💪";
-                }
-                
-                // Sad face
-                const mouth = document.querySelector('.character-mouth');
-                mouth.style.borderRadius = '25px 25px 0 0';
-                mouth.style.height = '10px';
-                setTimeout(() => {
-                    mouth.style.borderRadius = '0 0 25px 25px';
-                    mouth.style.height = '25px';
-                }, 1000);
-                
-                // Create raindrops
-                createRaindrops();
-            });
-
-            // Show bubble when character is near center
-            setInterval(() => {
-                const charRect = character.getBoundingClientRect();
-                const centerX = window.innerWidth / 2;
-                const distanceFromCenter = Math.abs(charRect.left + charRect.width/2 - centerX);
-                
-                // Show bubble when character is near center
-                if(distanceFromCenter < 200 && Math.random() > 0.8 && bubble.style.display === 'none') {
-                    messageIndex = (messageIndex + 1) % messages.length;
-                    bubbleText.textContent = messages[messageIndex];
-                    
-                    // Only show buttons for first two messages
-                    if(messageIndex <= 1) {
-                        document.getElementById('bubbleButtons').style.display = 'flex';
-                    } else {
-                        document.getElementById('bubbleButtons').style.display = 'none';
-                    }
-                    
-                    bubble.style.display = 'block';
-                    
-                    setTimeout(() => {
-                        if(bubble.style.display === 'block' && messageIndex > 1) {
-                            bubble.style.display = 'none';
-                        }
-                    }, 3000);
-                }
-            }, 3000);
-        }
-
-        // ===== CHARACTER WALKING =====
-        function startCharacterWalking() {
-            const container = document.getElementById('characterContainer');
-            let direction = 1; // 1 = right, -1 = left
-            let posX = 50;
-            let walking = true;
+        // ===== CREATE BACKGROUND ELEMENTS =====
+        function createBackgroundElements() {
+            const container = document.getElementById('backgroundElements');
             
-            function walk() {
-                if(!walking) return;
-                
-                // Move character
-                posX += direction * 3;
-                
-                // Bounce off walls
-                if(posX > window.innerWidth - 300) {
-                    direction = -1;
-                    posX = window.innerWidth - 300;
-                    // Flip character
-                    container.style.transform = 'translateX(-50%) scaleX(-1)';
-                } else if(posX < 50) {
-                    direction = 1;
-                    posX = 50;
-                    // Flip character back
-                    container.style.transform = 'translateX(-50%) scaleX(1)';
-                }
-                
-                // Update position
-                container.style.left = `${posX}px`;
-                
-                // Continue walking
-                requestAnimationFrame(walk);
+            // Create floating hearts
+            for(let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heart.style.animationDelay = `${Math.random() * 20}s`;
+                heart.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                container.appendChild(heart);
             }
             
-            // Start walking
-            walk();
+            // Create flowers
+            for(let i = 0; i < 15; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = Math.random() > 0.5 ? '🌸' : '🌼';
+                flower.style.left = `${Math.random() * 100}vw`;
+                flower.style.fontSize = `${Math.random() * 20 + 15}px`;
+                flower.style.animationDelay = `${Math.random() * 25}s`;
+                flower.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                container.appendChild(flower);
+            }
             
-            // Stop walking when clicked
-            document.getElementById('cuteCharacter').addEventListener('click', function() {
-                walking = false;
-                setTimeout(() => {
-                    walking = true;
-                    walk();
-                }, 2000);
+            // Create roses
+            for(let i = 0; i < 10; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                rose.innerHTML = '🌹';
+                rose.style.left = `${Math.random() * 100}vw`;
+                rose.style.fontSize = `${Math.random() * 20 + 18}px`;
+                rose.style.animationDelay = `${Math.random() * 18}s`;
+                rose.style.animationDuration = `${Math.random() * 15 + 12}s`;
+                container.appendChild(rose);
+            }
+        }
+
+        // ===== GENERATE VALENTINE'S WEEK CALENDAR =====
+        function generateValentineWeek() {
+            const container = document.getElementById('valentineWeek');
+            
+            valentineWeek.forEach(day => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                dayCard.dataset.day = day.day;
+                dayCard.innerHTML = `
+                    <div class="day-number">${day.day}</div>
+                    <div class="day-name">${day.name}</div>
+                    <div class="date">${day.date}</div>
+                    <div class="day-icon">${day.icon}</div>
+                `;
+                
+                dayCard.addEventListener('click', () => {
+                    // Remove active class from all cards
+                    document.querySelectorAll('.day-card').forEach(card => {
+                        card.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked card
+                    dayCard.classList.add('active');
+                    
+                    // Show day content
+                    showDay(day.day);
+                    
+                    // Create click effect
+                    createClickEffect(dayCard);
+                });
+                
+                container.appendChild(dayCard);
             });
         }
 
-        // ===== SHOW FIRST MESSAGE =====
-        function showFirstMessage() {
+        // ===== SHOW DAY CONTENT =====
+        function showDay(dayNumber) {
+            const dayData = valentineWeek.find(d => d.day == dayNumber);
+            if (!dayData) return;
+            
+            // Update Boeky's accessory
+            const accessory = document.getElementById('boekyAccessory');
+            accessory.innerHTML = dayData.boekyAccessory;
+            accessory.className = `boeky-accessory ${dayData.accessoryClass}`;
+            
+            // Update Boeky's heart color based on day
+            const heart = document.getElementById('boekyHeart');
+            heart.style.color = dayData.color;
+            
+            // Update Boeky's mouth (smile)
+            const mouth = document.getElementById('boekyMouth');
+            mouth.style.background = dayData.color;
+            
+            // Show day content
+            showDayContent(dayNumber);
+        }
+
+        // ===== SHOW DAY CONTENT DETAILS =====
+        function showDayContent(dayNumber) {
+            const dayData = valentineWeek.find(d => d.day == dayNumber);
+            if (!dayData) return;
+            
+            const contentContainer = document.getElementById('dayContent');
+            
+            // Generate special items HTML
+            const specialItemsHTML = dayData.special.map(item => `
+                <div class="special-item">
+                    <span class="special-icon">${item.icon}</span>
+                    <div>${item.text}</div>
+                </div>
+            `).join('');
+            
+            // Generate buttons HTML
+            const buttonsHTML = dayData.buttons.map(btn => `
+                <button class="action-btn ${btn.class}" onclick="handleAction('${btn.action}', ${dayNumber})">
+                    <i>${btn.icon}</i> ${btn.text}
+                </button>
+            `).join('');
+            
+            // Update content
+            contentContainer.innerHTML = `
+                <h2 class="day-title">${dayData.name} - ${dayData.date}</h2>
+                <p class="day-message">${dayData.message}</p>
+                <div class="day-special">
+                    ${specialItemsHTML}
+                </div>
+                <div class="interactive-buttons">
+                    ${buttonsHTML}
+                </div>
+            `;
+            
+            // Show content with animation
+            contentContainer.classList.remove('active');
             setTimeout(() => {
-                const bubble = document.getElementById('speechBubble');
-                const bubbleText = document.getElementById('bubbleText');
-                
-                // Show the exact message from your picture
-                bubbleText.textContent = "Hey babe, I made a little surprise for you";
-                document.getElementById('bubbleButtons').style.display = 'flex';
-                bubble.style.display = 'block';
-                
-                // Typewriter effect
-                const text = "Hey babe, I made a little surprise for you";
-                bubbleText.textContent = '';
-                
-                let i = 0;
-                const typing = setInterval(() => {
-                    if(i < text.length) {
-                        bubbleText.textContent += text.charAt(i);
-                        i++;
-                    } else {
-                        clearInterval(typing);
-                    }
-                }, 50);
-                
-                // Hide after 10 seconds
-                setTimeout(() => {
-                    if(bubble.style.display === 'block') {
-                        bubble.style.display = 'none';
-                    }
-                }, 10000);
-            }, 2000);
+                contentContainer.classList.add('active');
+            }, 10);
+            
+            // Special effects based on day
+            if (dayNumber == 3) { // Chocolate Day
+                createChocolateRain();
+            } else if (dayNumber == 1) { // Rose Day
+                createRosePetals();
+            } else if (dayNumber == 8) { // Valentine's Day
+                startCelebration();
+            }
+        }
+
+        // ===== HANDLE ACTION BUTTONS =====
+        function handleAction(action, dayNumber) {
+            const dayData = valentineWeek.find(d => d.day == dayNumber);
+            
+            switch(action) {
+                case 'sendRose':
+                    createHearts(10);
+                    showMessage("A virtual rose has been sent to your loved one! 🌹");
+                    break;
+                    
+                case 'showGarden':
+                    createRoseGarden();
+                    showMessage("Welcome to Boeky's Rose Garden! 🌹🌷🌸");
+                    break;
+                    
+                case 'acceptProposal':
+                    startCelebration();
+                    showMessage("Congratulations! 💍 Your love story continues...");
+                    break;
+                    
+                case 'sendChocolate':
+                    createChocolateRain();
+                    showMessage("Virtual chocolates delivered! 🍫💕");
+                    break;
+                    
+                case 'chocolateRain':
+                    createHeavyChocolateRain();
+                    showMessage("It's raining chocolates! 🍫🌧️");
+                    break;
+                    
+                case 'teddyHug':
+                    createHugAnimation();
+                    showMessage("Boeky sends a warm teddy bear hug! 🧸🤗");
+                    break;
+                    
+                case 'sendHug':
+                    createHugAnimation();
+                    showMessage("Virtual hug delivered with love! 🫂");
+                    break;
+                    
+                case 'sendKiss':
+                    createKisses(5);
+                    showMessage("😘💋 Mwah! A virtual kiss just for you!");
+                    break;
+                    
+                case 'celebrate':
+                    startGrandCelebration();
+                    showMessage("Happy Valentine's Day! 🎉💖 Let's celebrate love!");
+                    break;
+                    
+                default:
+                    createHearts(3);
+                    showMessage("Boeky loves you! 💖");
+            }
         }
 
         // ===== SPECIAL EFFECTS =====
-        function createClickEffect() {
-            const effect = document.createElement('div');
-            effect.className = 'click-effect';
-            effect.innerHTML = '💖';
-            effect.style.left = `${Math.random() * 100}vw`;
-            effect.style.top = `${Math.random() * 100}vh`;
-            effect.style.color = ['#ff66b3', '#ff3399', '#ff0066'][Math.floor(Math.random() * 3)];
-            
-            document.body.appendChild(effect);
-            
-            setTimeout(() => {
-                if(effect.parentNode) {
-                    document.body.removeChild(effect);
-                }
-            }, 1000);
-        }
-
         function createHearts(count) {
             for(let i = 0; i < count; i++) {
                 setTimeout(() => {
@@ -739,7 +1150,7 @@
                     heart.style.position = 'fixed';
                     heart.style.left = `${Math.random() * 100}vw`;
                     heart.style.top = `${Math.random() * 100}vh`;
-                    heart.style.fontSize = '35px';
+                    heart.style.fontSize = '25px';
                     heart.style.zIndex = '999';
                     heart.style.pointerEvents = 'none';
                     heart.style.opacity = '0.8';
@@ -749,7 +1160,7 @@
                     // Animate
                     heart.animate([
                         { transform: 'scale(0) rotate(0deg)', opacity: 0.8 },
-                        { transform: 'scale(2) rotate(180deg)', opacity: 0 }
+                        { transform: 'scale(1.5) rotate(180deg)', opacity: 0 }
                     ], {
                         duration: 1500,
                         easing: 'ease-out'
@@ -764,63 +1175,48 @@
             }
         }
 
-        function createConfetti() {
-            const colors = ['#ff66b3', '#ff3399', '#ff0066', '#ff99cc', '#4CAF50', '#66BB6A'];
+        function createChocolateRain() {
+            const container = document.getElementById('backgroundElements');
             
-            for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < 15; i++) {
                 setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = `${50}vw`;
-                    confetti.style.top = `${50}vh`;
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    const chocolate = document.createElement('div');
+                    chocolate.className = 'chocolate';
+                    chocolate.innerHTML = '🍫';
+                    chocolate.style.left = `${Math.random() * 100}vw`;
+                    chocolate.style.fontSize = `${Math.random() * 20 + 15}px`;
+                    chocolate.style.animationDelay = '0s';
+                    chocolate.style.animationDuration = `${Math.random() * 5 + 3}s`;
                     
-                    document.body.appendChild(confetti);
+                    container.appendChild(chocolate);
                     
-                    // Animate
-                    const angle = Math.random() * Math.PI * 2;
-                    const speed = 2 + Math.random() * 4;
-                    const x = Math.cos(angle) * speed;
-                    const y = Math.sin(angle) * speed;
-                    
-                    let posX = 50;
-                    let posY = 50;
-                    const animation = setInterval(() => {
-                        posX += x;
-                        posY += y;
-                        confetti.style.left = `${posX}vw`;
-                        confetti.style.top = `${posY}vh`;
-                        confetti.style.opacity = parseFloat(confetti.style.opacity || 1) - 0.01;
-                        
-                        if(posX < 0 || posX > 100 || posY < 0 || posY > 100 || parseFloat(confetti.style.opacity) <= 0) {
-                            clearInterval(animation);
-                            if(confetti.parentNode) {
-                                document.body.removeChild(confetti);
-                            }
+                    setTimeout(() => {
+                        if(chocolate.parentNode) {
+                            container.removeChild(chocolate);
                         }
-                    }, 30);
-                }, i * 30);
+                    }, 20000);
+                }, i * 200);
             }
         }
 
-        function createRaindrops() {
-            for(let i = 0; i < 15; i++) {
+        function createHeavyChocolateRain() {
+            for(let i = 0; i < 30; i++) {
                 setTimeout(() => {
-                    const drop = document.createElement('div');
-                    drop.innerHTML = '💧';
-                    drop.style.position = 'fixed';
-                    drop.style.fontSize = '1.8rem';
-                    drop.style.left = `${Math.random() * 100}vw`;
-                    drop.style.top = '-50px';
-                    drop.style.zIndex = '999';
-                    drop.style.opacity = '0.6';
-                    drop.style.pointerEvents = 'none';
+                    const choco = document.createElement('div');
+                    choco.innerHTML = '🍫';
+                    choco.style.position = 'fixed';
+                    choco.style.left = `${Math.random() * 100}vw`;
+                    choco.style.top = '-50px';
+                    choco.style.fontSize = `${Math.random() * 20 + 15}px`;
+                    choco.style.zIndex = '999';
+                    choco.style.opacity = '0.9';
+                    choco.style.pointerEvents = 'none';
                     
-                    document.body.appendChild(drop);
+                    document.body.appendChild(choco);
                     
                     // Animate falling
-                    drop.animate([
-                        { transform: 'translateY(0) rotate(0deg)', opacity: 0.6 },
+                    choco.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 0.9 },
                         { transform: `translateY(${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
                     ], {
                         duration: 2000 + Math.random() * 1000,
@@ -828,85 +1224,290 @@
                     });
                     
                     setTimeout(() => {
-                        if(drop.parentNode) {
-                            document.body.removeChild(drop);
+                        if(choco.parentNode) {
+                            document.body.removeChild(choco);
                         }
                     }, 3000);
+                }, i * 100);
+            }
+        }
+
+        function createRosePetals() {
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.innerHTML = '🌸';
+                    petal.style.position = 'fixed';
+                    petal.style.left = `${Math.random() * 100}vw`;
+                    petal.style.top = '-30px';
+                    petal.style.fontSize = '20px';
+                    petal.style.zIndex = '999';
+                    petal.style.opacity = '0.7';
+                    petal.style.pointerEvents = 'none';
+                    
+                    document.body.appendChild(petal);
+                    
+                    // Animate falling
+                    petal.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 0.7 },
+                        { transform: `translateY(${window.innerHeight + 100}px) rotate(180deg)`, opacity: 0 }
+                    ], {
+                        duration: 3000 + Math.random() * 2000,
+                        easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
+                    });
+                    
+                    setTimeout(() => {
+                        if(petal.parentNode) {
+                            document.body.removeChild(petal);
+                        }
+                    }, 5000);
                 }, i * 150);
             }
         }
 
-        // ===== MAKE CHARACTER DRAGGABLE =====
-        let isDragging = false;
-        let dragStartX, dragStartY, initialX, initialY;
-
-        document.getElementById('cuteCharacter').addEventListener('mousedown', startDrag);
-        document.getElementById('cuteCharacter').addEventListener('touchstart', startDrag);
-
-        function startDrag(e) {
-            isDragging = true;
-            const container = document.getElementById('characterContainer');
-            const rect = container.getBoundingClientRect();
+        function createRoseGarden() {
+            const scene = document.getElementById('boekyScene');
+            const garden = document.createElement('div');
+            garden.style.position = 'absolute';
+            garden.style.bottom = '0';
+            garden.style.width = '100%';
+            garden.style.height = '100px';
+            garden.style.display = 'flex';
+            garden.style.justifyContent = 'space-around';
+            garden.style.zIndex = '2';
             
-            if(e.type === 'mousedown') {
-                dragStartX = e.clientX;
-                dragStartY = e.clientY;
-                initialX = rect.left;
-                initialY = rect.top;
-                document.addEventListener('mousemove', drag);
-                document.addEventListener('mouseup', stopDrag);
-            } else {
-                dragStartX = e.touches[0].clientX;
-                dragStartY = e.touches[0].clientY;
-                initialX = rect.left;
-                initialY = rect.top;
-                document.addEventListener('touchmove', drag);
-                document.addEventListener('touchend', stopDrag);
+            for(let i = 0; i < 8; i++) {
+                const rose = document.createElement('div');
+                rose.innerHTML = '🌹';
+                rose.style.fontSize = '2.5rem';
+                rose.style.animation = 'tulipGrow 3s infinite alternate';
+                rose.style.animationDelay = `${i * 0.2}s`;
+                garden.appendChild(rose);
             }
             
-            e.preventDefault();
-        }
-
-        function drag(e) {
-            if(!isDragging) return;
+            scene.appendChild(garden);
             
-            const container = document.getElementById('characterContainer');
-            let clientX, clientY;
-            
-            if(e.type === 'mousemove') {
-                clientX = e.clientX;
-                clientY = e.clientY;
-            } else {
-                clientX = e.touches[0].clientX;
-                clientY = e.touches[0].clientY;
-            }
-            
-            const deltaX = clientX - dragStartX;
-            const deltaY = clientY - dragStartY;
-            
-            container.style.left = `${initialX + deltaX}px`;
-            container.style.bottom = `${window.innerHeight - initialY - deltaY}px`;
-            container.style.transform = 'translateX(0) scaleX(1)'; // Remove walking transform
-        }
-
-        function stopDrag() {
-            isDragging = false;
-            document.removeEventListener('mousemove', drag);
-            document.removeEventListener('touchmove', drag);
-            
-            // Return to walking animation after drag
             setTimeout(() => {
-                const container = document.getElementById('characterContainer');
-                container.style.bottom = '100px';
-                container.style.transform = 'translateX(-50%) scaleX(1)';
-            }, 100);
+                if(garden.parentNode) {
+                    scene.removeChild(garden);
+                }
+            }, 10000);
         }
 
-        // ===== AUTO-CLICK FOR DEMO =====
-        setTimeout(() => {
-            // Auto-click the character to show it works
-            document.getElementById('cuteCharacter').click();
-        }, 3000);
+        function createHugAnimation() {
+            const boeky = document.getElementById('boeky');
+            const originalTransform = boeky.style.transform;
+            
+            // Hug animation
+            boeky.style.transform = 'translateX(-50%) scale(1.1)';
+            
+            // Create hug effect
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const hug = document.createElement('div');
+                    hug.innerHTML = '🫂';
+                    hug.style.position = 'absolute';
+                    hug.style.left = '50%';
+                    hug.style.top = '50%';
+                    hug.style.fontSize = '40px';
+                    hug.style.zIndex = '999';
+                    hug.style.opacity = '0.7';
+                    hug.style.pointerEvents = 'none';
+                    hug.style.transform = 'translate(-50%, -50%)';
+                    
+                    document.getElementById('boekyScene').appendChild(hug);
+                    
+                    hug.animate([
+                        { transform: 'translate(-50%, -50%) scale(0.5)', opacity: 0.7 },
+                        { transform: 'translate(-50%, -50%) scale(1.5)', opacity: 0 }
+                    ], {
+                        duration: 1000,
+                        easing: 'ease-out'
+                    });
+                    
+                    setTimeout(() => {
+                        if(hug.parentNode) {
+                            document.getElementById('boekyScene').removeChild(hug);
+                        }
+                    }, 1000);
+                }, i * 200);
+            }
+            
+            // Reset Boeky
+            setTimeout(() => {
+                boeky.style.transform = originalTransform;
+            }, 1500);
+        }
+
+        function createKisses(count) {
+            for(let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const kiss = document.createElement('div');
+                    kiss.innerHTML = '💋';
+                    kiss.style.position = 'fixed';
+                    kiss.style.left = `${Math.random() * 100}vw`;
+                    kiss.style.top = `${Math.random() * 100}vh`;
+                    kiss.style.fontSize = '30px';
+                    kiss.style.zIndex = '999';
+                    kiss.style.opacity = '0.9';
+                    kiss.style.pointerEvents = 'none';
+                    
+                    document.body.appendChild(kiss);
+                    
+                    kiss.animate([
+                        { transform: 'scale(0) rotate(0deg)', opacity: 0.9 },
+                        { transform: 'scale(2) rotate(360deg)', opacity: 0 }
+                    ], {
+                        duration: 1500,
+                        easing: 'ease-out'
+                    });
+                    
+                    setTimeout(() => {
+                        if(kiss.parentNode) {
+                            document.body.removeChild(kiss);
+                        }
+                    }, 1500);
+                }, i * 300);
+            }
+        }
+
+        function startCelebration() {
+            const celebration = document.getElementById('celebration');
+            celebration.style.display = 'block';
+            
+            // Create confetti
+            const colors = ['#ff3366', '#ff66b2', '#ff9966', '#66cc66', '#3399ff', '#ffcc00'];
+            
+            for(let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = '-10px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                celebration.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if(confetti.parentNode) {
+                        celebration.removeChild(confetti);
+                    }
+                }, 3000);
+            }
+            
+            // Hide celebration after 3 seconds
+            setTimeout(() => {
+                celebration.style.display = 'none';
+                // Remove all confetti
+                while(celebration.firstChild) {
+                    celebration.removeChild(celebration.firstChild);
+                }
+            }, 3000);
+        }
+
+        function startGrandCelebration() {
+            startCelebration();
+            createHearts(20);
+            createKisses(10);
+            
+            // Make Boeky dance
+            const boeky = document.getElementById('boeky');
+            const originalAnimation = boeky.style.animation;
+            boeky.style.animation = 'boekyBounce 0.5s infinite alternate';
+            
+            setTimeout(() => {
+                boeky.style.animation = originalAnimation;
+            }, 3000);
+        }
+
+        function createClickEffect(element) {
+            const rect = element.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            const effect = document.createElement('div');
+            effect.innerHTML = '💖';
+            effect.style.position = 'fixed';
+            effect.style.left = `${x}px`;
+            effect.style.top = `${y}px`;
+            effect.style.fontSize = '20px';
+            effect.style.zIndex = '999';
+            effect.style.opacity = '0.9';
+            effect.style.pointerEvents = 'none';
+            effect.style.transform = 'translate(-50%, -50%)';
+            
+            document.body.appendChild(effect);
+            
+            effect.animate([
+                { transform: 'translate(-50%, -50%) scale(0)', opacity: 0.9 },
+                { transform: 'translate(-50%, -50%) scale(2)', opacity: 0 }
+            ], {
+                duration: 800,
+                easing: 'ease-out'
+            });
+            
+            setTimeout(() => {
+                if(effect.parentNode) {
+                    document.body.removeChild(effect);
+                }
+            }, 800);
+        }
+
+        function showMessage(text) {
+            // Create a temporary message
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.style.position = 'fixed';
+            message.style.bottom = '50px';
+            message.style.left = '50%';
+            message.style.transform = 'translateX(-50%)';
+            message.style.background = 'rgba(255, 255, 255, 0.95)';
+            message.style.color = '#ff3366';
+            message.style.padding = '15px 30px';
+            message.style.borderRadius = '30px';
+            message.style.boxShadow = '0 10px 30px rgba(255, 51, 102, 0.3)';
+            message.style.zIndex = '1000';
+            message.style.fontSize = '1.1rem';
+            message.style.fontWeight = 'bold';
+            message.style.border = '3px solid #ffb3d9';
+            
+            document.body.appendChild(message);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                message.animate([
+                    { opacity: 1, transform: 'translateX(-50%) translateY(0)' },
+                    { opacity: 0, transform: 'translateX(-50%) translateY(20px)' }
+                ], {
+                    duration: 500,
+                    easing: 'ease-out'
+                });
+                
+                setTimeout(() => {
+                    if(message.parentNode) {
+                        document.body.removeChild(message);
+                    }
+                }, 500);
+            }, 3000);
+        }
+
+        // ===== AUTO-ROTATE THROUGH DAYS (DEMO) =====
+        let currentAutoDay = 1;
+        setInterval(() => {
+            if (document.hidden) return; // Don't auto-rotate if tab is not active
+            
+            currentAutoDay = currentAutoDay % 8 + 1;
+            
+            // Update day card
+            document.querySelectorAll('.day-card').forEach(card => {
+                card.classList.remove('active');
+                if(card.dataset.day == currentAutoDay) {
+                    card.classList.add('active');
+                }
+            });
+            
+            // Show day
+            showDay(currentAutoDay);
+        }, 15000); // Change day every 15 seconds for demo
     </script>
 </body>
 </html>
