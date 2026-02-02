@@ -152,25 +152,156 @@
             }
         }
 
-        /* Counter */
-        .counter {
+        /* UNIQUE FRONT PAGE STYLES */
+        .front-page-container {
+            position: relative;
+            padding: 50px 30px;
+        }
+
+        .secret-message {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-red);
+            padding: 10px 20px;
+            border-radius: 50px;
             font-size: 1rem;
-            opacity: 0.9;
+            opacity: 0;
+            animation: revealMessage 2s ease-out 1s forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        @keyframes revealMessage {
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .greeting {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--light-pink);
+            background: linear-gradient(45deg, #ff0066, #ff9900, #ff0066);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+            text-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .personalized-text {
+            font-size: 2rem;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border-left: 5px solid var(--rose-color);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .personalized-text::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 2rem;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* VIRTUAL ROSE GARDEN */
+        .rose-garden-container {
+            position: relative;
+            min-height: 300px;
+            margin: 30px 0;
+            background: linear-gradient(to bottom, rgba(0, 100, 0, 0.1), rgba(139, 69, 19, 0.1));
+            border-radius: 20px;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .rose-garden-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("https://www.transparenttextures.com/patterns/leaves.png");
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .rose-spot {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 100, 0, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 1.5rem;
+        }
+
+        .rose-spot:hover {
+            background: rgba(0, 100, 0, 0.4);
+            transform: scale(1.1);
+        }
+
+        .rose-spot.planted {
+            background: transparent;
+        }
+
+        .rose-spot.planted::after {
+            content: '🌹';
+            font-size: 3rem;
+            animation: growRose 1s ease-out forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes growRose {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .garden-instruction {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: var(--light-pink);
+            background: rgba(0, 0, 0, 0.3);
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 15px;
             display: inline-block;
         }
 
-        .counter i {
+        .rose-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-red);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
             font-size: 1.2rem;
-            margin-right: 5px;
+            z-index: 5;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Valentine's Week Calendar */
@@ -349,30 +480,6 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Interactive Elements */
-        .interactive-zone {
-            margin: 30px 0;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .clickable-heart {
-            font-size: 80px;
-            cursor: pointer;
-            animation: pulse 1.5s infinite;
-            transition: transform 0.2s;
-        }
-
-        .clickable-heart:active {
-            transform: scale(0.8);
-        }
-
         /* Buttons */
         .buttons {
             display: flex;
@@ -407,6 +514,17 @@
 
         button:active {
             transform: translateY(-2px);
+        }
+
+        .special-btn {
+            background: linear-gradient(135deg, #ff0066, #ff9900);
+            color: white;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 102, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 153, 0, 0.7); }
         }
 
         /* Progress Bar */
@@ -469,6 +587,15 @@
                 margin: 10px;
             }
             
+            .greeting {
+                font-size: 2.5rem;
+            }
+            
+            .personalized-text {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+            
             .bubble {
                 font-size: 1.3rem;
                 padding: 15px 20px;
@@ -502,16 +629,20 @@
             .day-emoji {
                 font-size: 1.5rem;
             }
-            
-            .clickable-heart {
-                font-size: 60px;
-            }
         }
 
         @media (max-width: 480px) {
             .buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .greeting {
+                font-size: 2rem;
+            }
+            
+            .personalized-text {
+                font-size: 1.2rem;
             }
             
             .text {
@@ -552,33 +683,74 @@
     </div>
 
     <div class="container">
-        <!-- PAGE 1 - WELCOME & VALENTINE'S WEEK CALENDAR -->
-        <div class="page active" id="p1">
-            <div class="counter">
-                <i class="fas fa-calendar-heart"></i> Day 1/9 - Welcome to Valentine's Week!
-            </div>
-            <div class="bubble">Hey Lakshita! 💖</div>
-            <div class="text type" id="typewriter"></div>
-            
-            <div class="interactive-zone">
-                <div class="text" style="font-size: 1.8rem; margin-bottom: 20px;">
-                    <i class="fas fa-heart rose"></i> Complete Valentine's Week Surprise! <i class="fas fa-heart rose"></i>
-                </div>
-                <div class="clickable-heart" onclick="createHeartExplosion()">
-                    💝
-                </div>
-                <div class="text" style="margin-top: 15px; font-size: 1.1rem;">
-                    Click the heart for magic!
-                </div>
+        <!-- UNIQUE FRONT PAGE -->
+        <div class="page active front-page-container" id="p1">
+            <div class="secret-message">
+                <i class="fas fa-lock-open"></i> Secret message unlocked: For Lakshita's eyes only!
             </div>
             
-            <div class="week-calendar" id="weekCalendar">
-                <!-- Calendar will be populated by JavaScript -->
+            <h1 class="greeting">
+                <i class="fas fa-sparkles"></i> Lakshita's Valentine Week <i class="fas fa-sparkles"></i>
+            </h1>
+            
+            <div class="personalized-text">
+                <i class="fas fa-heart" style="color: var(--rose-color); margin-right: 10px;"></i>
+                Hello Lakshita! 💖<br>
+                This isn't just any Valentine's surprise...<br>
+                It's a <strong>week-long magical journey</strong> made just for YOU! ✨
+            </div>
+            
+            <div class="bubble">Aishwary has a special gift for you... 🌹</div>
+            
+            <!-- VIRTUAL ROSE GARDEN -->
+            <div class="rose-garden-container" id="roseGarden">
+                <div class="rose-counter">
+                    <i class="fas fa-rose"></i> Roses: <span id="roseCount">0</span>/8
+                </div>
+                <div class="text" style="font-size: 1.3rem; margin-bottom: 20px;">
+                    Plant a rose garden for Valentine's Week! Click on the circles to plant roses.
+                </div>
+                <!-- Rose spots will be generated by JavaScript -->
+            </div>
+            
+            <div class="garden-instruction">
+                <i class="fas fa-lightbulb"></i> Plant all 8 roses to unlock the full Valentine's Week journey!
+            </div>
+            
+            <!-- Valentine's Week Calendar Preview -->
+            <div class="week-calendar" id="weekCalendarPreview">
+                <div class="day-box" style="border-color: #ff0066;">
+                    <span class="day-emoji">🌹</span>
+                    <div class="day-name">Rose Day</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Feb 7</div>
+                </div>
+                <div class="day-box" style="border-color: #FFD700;">
+                    <span class="day-emoji">💍</span>
+                    <div class="day-name">Propose Day</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Feb 8</div>
+                </div>
+                <div class="day-box" style="border-color: #8B4513;">
+                    <span class="day-emoji">🍫</span>
+                    <div class="day-name">Chocolate Day</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Feb 9</div>
+                </div>
+                <div class="day-box" style="border-color: #DEB887;">
+                    <span class="day-emoji">🧸</span>
+                    <div class="day-name">Teddy Day</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Feb 10</div>
+                </div>
+            </div>
+            
+            <div class="text" style="font-size: 1.2rem; margin-top: 20px;">
+                Each day has a special surprise waiting for you! 💝
             </div>
             
             <div class="buttons">
-                <button onclick="nextPage(2)">
-                    <i class="fas fa-arrow-right"></i> Start Journey 💕
+                <button onclick="startRoseGarden()" class="special-btn" id="startGardenBtn">
+                    <i class="fas fa-seedling"></i> Start Planting Roses
+                </button>
+                <button onclick="nextPage(2)" id="continueBtn" style="display: none;">
+                    <i class="fas fa-arrow-right"></i> Begin Valentine's Week
                 </button>
             </div>
         </div>
@@ -594,17 +766,15 @@
                 Here's a virtual rose garden just for you!
             </div>
             
-            <div class="interactive-zone">
-                <div class="rose-garden">
-                    <div style="font-size: 60px; margin-bottom: 20px;">
-                        🌹🌹🌹<br>
-                        🌹💖🌹<br>
-                        🌹🌹🌹
-                    </div>
-                    <button onclick="growRoses()" style="background: linear-gradient(135deg, #ff0066, #ff66b2);">
-                        <i class="fas fa-seedling"></i> Grow More Roses
-                    </button>
+            <div class="rose-garden-container" style="min-height: 200px;">
+                <div style="font-size: 60px; margin-bottom: 20px;">
+                    🌹🌹🌹<br>
+                    🌹💖🌹<br>
+                    🌹🌹🌹
                 </div>
+                <button onclick="growRoses()" style="background: linear-gradient(135deg, #ff0066, #ff66b2);">
+                    <i class="fas fa-seedling"></i> Grow More Roses
+                </button>
             </div>
             
             <div class="buttons">
@@ -625,7 +795,7 @@
                 You're the best thing that could happen to anyone.
             </div>
             
-            <div class="interactive-zone">
+            <div class="rose-garden-container" style="min-height: 200px; background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.1));">
                 <div style="font-size: 70px; margin-bottom: 20px;">
                     💍✨💖
                 </div>
@@ -689,7 +859,7 @@
                 that you're loved and cared for!
             </div>
             
-            <div class="interactive-zone">
+            <div class="rose-garden-container" style="min-height: 200px; background: linear-gradient(to bottom, rgba(222, 184, 135, 0.1), rgba(255, 255, 255, 0.1));">
                 <div style="font-size: 80px; margin-bottom: 20px;" class="teddy">
                     🧸💖🧸
                 </div>
@@ -760,8 +930,8 @@
                 Click below to receive hugs!
             </div>
             
-            <div class="interactive-zone">
-                <div class="clickable-heart hug" onclick="sendHug()" id="hugHeart">
+            <div class="rose-garden-container" style="min-height: 200px; background: linear-gradient(to bottom, rgba(255, 182, 193, 0.1), rgba(255, 255, 255, 0.1));">
+                <div class="clickable-heart hug" onclick="sendHug()" id="hugHeart" style="font-size: 100px; margin: 20px 0;">
                     🤗
                 </div>
                 <div class="text" style="margin-top: 20px; font-size: 1.3rem;" id="hugCounter">
@@ -789,7 +959,7 @@
                 Sending you virtual kisses filled with love and affection!
             </div>
             
-            <div class="interactive-zone">
+            <div class="rose-garden-container" style="min-height: 200px; background: linear-gradient(to bottom, rgba(255, 20, 147, 0.1), rgba(255, 255, 255, 0.1));">
                 <div style="font-size: 60px; margin-bottom: 20px;">
                     💋💋💋<br>
                     💋❤️💋<br>
@@ -833,7 +1003,7 @@
                 </div>
             </div>
             
-            <div class="interactive-zone">
+            <div class="rose-garden-container" style="min-height: 200px;">
                 <div class="bar-container">
                     <div class="bar-label">
                         <span>Our Love Meter</span>
@@ -902,6 +1072,7 @@
         let hugCount = 0;
         let kissCount = 0;
         let musicPlaying = true;
+        let rosesPlanted = 0;
         const backgroundMusic = document.getElementById('backgroundMusic');
         const musicIcon = document.getElementById('musicIcon');
         
@@ -927,73 +1098,80 @@
             { emoji: "🤝", title: "Understanding", desc: "Heart-to-heart connections" }
         ];
 
-        // Typewriter Effect
-        const typewriterText = "Welcome to your personalized Valentine's Week journey, Lakshita! 💖";
-        let charIndex = 0;
-        const typewriterElement = document.getElementById('typewriter');
-
-        function typeWriter() {
-            if (charIndex < typewriterText.length) {
-                typewriterElement.innerHTML += typewriterText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 40);
-            }
-        }
-
-        // Create Valentine's Week Calendar
-        function createWeekCalendar() {
-            const calendar = document.getElementById('weekCalendar');
-            valentinesWeek.forEach(day => {
-                const dayBox = document.createElement('div');
-                dayBox.className = 'day-box';
-                dayBox.innerHTML = `
-                    <span class="day-emoji">${day.emoji}</span>
-                    <div class="day-name">${day.name}</div>
-                    <div style="font-size: 0.8rem; opacity: 0.8;">${day.date}</div>
-                `;
-                dayBox.style.borderColor = day.color;
-                dayBox.onclick = () => jumpToDay(day.day + 1); // +1 because page 1 is welcome
-                calendar.appendChild(dayBox);
-            });
-        }
-
-        // Jump to specific day
-        function jumpToDay(dayNumber) {
-            if (dayNumber >= 2 && dayNumber <= 9) {
-                nextPage(dayNumber);
-            }
-        }
-
-        // Create Memory Gallery
-        function createMemoryGallery() {
-            const gallery = document.getElementById('memoryGallery');
-            gallery.innerHTML = '';
+        // Create Virtual Rose Garden on Front Page
+        function createRoseGarden() {
+            const garden = document.getElementById('roseGarden');
+            const roseSpots = [];
             
-            memories.forEach((memory, index) => {
-                const memoryItem = document.createElement('div');
-                memoryItem.className = 'memory-item';
-                memoryItem.innerHTML = `
-                    <span class="memory-emoji">${memory.emoji}</span>
-                    <div class="memory-title">${memory.title}</div>
-                    <div class="memory-desc">${memory.desc}</div>
-                `;
-                memoryItem.onclick = () => viewMemory(index);
-                gallery.appendChild(memoryItem);
-            });
+            // Create 8 rose spots in random positions
+            for (let i = 0; i < 8; i++) {
+                const spot = document.createElement('div');
+                spot.className = 'rose-spot';
+                
+                // Random position within garden container
+                const left = 10 + Math.random() * 80;
+                const top = 50 + Math.random() * 40;
+                
+                spot.style.left = `${left}%`;
+                spot.style.top = `${top}%`;
+                
+                spot.innerHTML = '🌱';
+                spot.title = `Click to plant rose ${i + 1}`;
+                
+                spot.onclick = function() {
+                    if (!this.classList.contains('planted')) {
+                        this.classList.add('planted');
+                        rosesPlanted++;
+                        document.getElementById('roseCount').textContent = rosesPlanted;
+                        
+                        // Add rose planting effect
+                        createRoseEffect(this);
+                        
+                        // Check if all roses are planted
+                        if (rosesPlanted >= 8) {
+                            setTimeout(() => {
+                                document.getElementById('continueBtn').style.display = 'flex';
+                                document.getElementById('startGardenBtn').style.display = 'none';
+                                createHeartExplosion();
+                                alert('🎉 Amazing! You planted all roses! The Valentine\'s Week journey is now unlocked! 💖');
+                            }, 1000);
+                        }
+                    }
+                };
+                
+                garden.appendChild(spot);
+                roseSpots.push(spot);
+            }
+        }
+
+        function createRoseEffect(element) {
+            // Create rose petals animation
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.innerHTML = '🌸';
+                    petal.style.position = 'absolute';
+                    petal.style.fontSize = '20px';
+                    petal.style.left = element.style.left;
+                    petal.style.top = element.style.top;
+                    petal.style.animation = `floatUp 2s ease-out forwards`;
+                    petal.style.zIndex = '10';
+                    
+                    document.getElementById('roseGarden').appendChild(petal);
+                    setTimeout(() => petal.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        function startRoseGarden() {
+            createRoseGarden();
+            document.getElementById('startGardenBtn').innerHTML = '<i class="fas fa-rose"></i> Keep Planting Roses!';
+            document.getElementById('startGardenBtn').style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
         }
 
         // Page Navigation
         function nextPage(pageNumber) {
             if (pageNumber < 1 || pageNumber > totalPages) return;
-            
-            // Update active calendar day
-            document.querySelectorAll('.day-box').forEach((box, index) => {
-                if (index === pageNumber - 2) { // -2 because page 1 is welcome
-                    box.classList.add('active');
-                } else {
-                    box.classList.remove('active');
-                }
-            });
             
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -1233,6 +1411,7 @@
             cuddleLevel = 0;
             hugCount = 0;
             kissCount = 0;
+            rosesPlanted = 0;
             currentPage = 1;
             
             // Reset UI elements
@@ -1242,26 +1421,26 @@
             document.getElementById('cuddlePercent').textContent = '0%';
             document.getElementById('hugCounter').textContent = 'Hugs Received: 0';
             document.getElementById('kissCounter').textContent = 'Kisses sent: 0';
+            document.getElementById('roseCount').textContent = '0';
             
-            // Reset calendar
-            document.querySelectorAll('.day-box').forEach(box => box.classList.remove('active'));
+            // Reset rose garden
+            const roseGarden = document.getElementById('roseGarden');
+            const spots = roseGarden.querySelectorAll('.rose-spot');
+            spots.forEach(spot => spot.remove());
+            
+            // Reset buttons
+            document.getElementById('continueBtn').style.display = 'none';
+            document.getElementById('startGardenBtn').style.display = 'flex';
+            document.getElementById('startGardenBtn').innerHTML = '<i class="fas fa-seedling"></i> Start Planting Roses';
+            document.getElementById('startGardenBtn').style.background = 'linear-gradient(135deg, #ff0066, #ff9900)';
             
             // Go back to first page
             nextPage(1);
-            
-            // Restart typewriter
-            typewriterElement.innerHTML = '';
-            charIndex = 0;
-            setTimeout(typeWriter, 500);
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Start typewriter
-            typeWriter();
-            
-            // Create calendar and gallery
-            createWeekCalendar();
+            // Create memory gallery
             createMemoryGallery();
             
             // Try to play music
