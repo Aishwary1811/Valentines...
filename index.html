@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Lakshita 💖 - Complete Valentine's Journey</title>
     <meta name="description" content="A complete Valentine's Week surprise with magical garden for Lakshita from Aishwary">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    
     <style>
         /* CSS Variables for Garden Theme */
         :root {
@@ -22,6 +28,12 @@
             --heart-color: #FF4081;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --transition: all 0.3s ease;
+            
+            /* Font Variables */
+            --heading-font: 'Dancing Script', cursive;
+            --body-font: 'Playfair Display', serif;
+            --special-font: 'Sacramento', cursive;
+            --fun-font: 'Pacifico', cursive;
         }
 
         /* Reset and Base Styles */
@@ -32,7 +44,7 @@
         }
 
         body {
-            font-family: 'Brush Script MT', cursive, 'Segoe UI', sans-serif;
+            font-family: var(--body-font);
             background: 
                 linear-gradient(135deg, var(--valentine-dark), var(--valentine-red), var(--rose-pink)),
                 url("https://www.transparenttextures.com/patterns/hearts.png");
@@ -47,6 +59,7 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            line-height: 1.6;
         }
 
         /* Animated Background Elements */
@@ -158,6 +171,7 @@
             animation: noteFloat 4s ease-in-out infinite;
             border: 2px solid var(--garden-light);
             transform-origin: top right;
+            font-family: var(--body-font);
         }
 
         @keyframes noteFloat {
@@ -171,7 +185,8 @@
         }
 
         .garden-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
+            font-family: var(--heading-font);
             background: linear-gradient(45deg, #FF69B4, #FFD700, #87CEEB, #DA70D6);
             -webkit-background-clip: text;
             background-clip: text;
@@ -179,6 +194,7 @@
             animation: gardenTitle 3s infinite alternate;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         @keyframes gardenTitle {
@@ -187,7 +203,8 @@
         }
 
         .garden-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-family: var(--special-font);
             color: var(--garden-light);
             opacity: 0.9;
             margin-bottom: 20px;
@@ -196,12 +213,13 @@
         .personal-welcome {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             margin: 30px 0;
             border-left: 5px solid var(--rose-pink);
             text-align: left;
             position: relative;
             overflow: hidden;
+            font-family: var(--body-font);
         }
 
         .personal-welcome::before {
@@ -209,21 +227,22 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 2rem;
+            font-size: 2.5rem;
             opacity: 0.3;
         }
 
         .welcome-text {
-            font-size: 1.8rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: var(--body-font);
         }
 
         .signature {
-            font-size: 2rem;
+            font-size: 2.5rem;
             text-align: right;
             color: var(--garden-light);
-            font-family: 'Brush Script MT', cursive;
+            font-family: var(--special-font);
             margin-top: 20px;
         }
 
@@ -253,6 +272,7 @@
             position: relative;
             overflow: hidden;
             min-height: 150px;
+            font-family: var(--body-font);
         }
 
         .garden-plot:hover {
@@ -272,14 +292,16 @@
         }
 
         .plot-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 5px;
+            font-family: var(--body-font);
         }
 
         .plot-desc {
             font-size: 0.9rem;
             opacity: 0.8;
+            font-family: var(--body-font);
         }
 
         .flower-growing {
@@ -304,13 +326,15 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
+            font-family: var(--body-font);
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-family: var(--body-font);
         }
 
         .progress-bar {
@@ -340,15 +364,18 @@
             text-align: left;
             position: relative;
             border: 3px solid var(--garden-light);
+            font-family: var(--body-font);
         }
 
         .info-title {
             color: var(--garden-dark);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: var(--heading-font);
+            font-weight: 600;
         }
 
         /* Flower Types Styling */
@@ -363,7 +390,7 @@
 
         /* ============ VALENTINE'S WEEK STYLES ============ */
         .counter {
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 20px;
             color: var(--garden-light);
@@ -375,6 +402,7 @@
             padding: 10px 20px;
             border-radius: 20px;
             display: inline-block;
+            font-family: var(--body-font);
         }
 
         .counter i {
@@ -388,12 +416,13 @@
             padding: 18px 30px;
             border-radius: 30px;
             display: inline-block;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             position: relative;
             box-shadow: var(--shadow);
             max-width: 90%;
             font-weight: bold;
+            font-family: var(--special-font);
         }
 
         .bubble::after {
@@ -408,11 +437,12 @@
         }
 
         .text {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             line-height: 1.8;
             margin: 25px 0;
             padding: 0 15px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-family: var(--body-font);
         }
 
         /* Valentine's Week Calendar */
@@ -435,6 +465,7 @@
             transition: var(--transition);
             cursor: pointer;
             border: 2px solid transparent;
+            font-family: var(--body-font);
         }
 
         .day-box:hover {
@@ -471,6 +502,7 @@
             border-radius: 15px;
             transition: var(--transition);
             cursor: pointer;
+            font-family: var(--body-font);
         }
 
         .memory-item:hover {
@@ -485,14 +517,16 @@
         }
 
         .memory-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
             font-weight: bold;
+            font-family: var(--body-font);
         }
 
         .memory-desc {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
+            font-family: var(--body-font);
         }
 
         /* Love Bar */
@@ -500,13 +534,15 @@
             width: 90%;
             max-width: 500px;
             margin: 30px auto;
+            font-family: var(--body-font);
         }
 
         .bar-label {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-family: var(--body-font);
         }
 
         .bar {
@@ -557,6 +593,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-family: var(--body-font);
         }
 
         .clickable-heart {
@@ -564,6 +601,7 @@
             cursor: pointer;
             animation: pulse 1.5s infinite;
             transition: transform 0.2s;
+            font-family: var(--fun-font);
         }
 
         .clickable-heart:active {
@@ -600,6 +638,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-family: var(--body-font);
         }
 
         button:hover {
@@ -710,6 +749,7 @@
             animation: modalPop 0.5s ease;
             color: var(--garden-dark);
             border: 5px solid var(--rose-pink);
+            font-family: var(--body-font);
         }
 
         @keyframes modalPop {
@@ -734,6 +774,67 @@
             justify-content: center;
         }
 
+        .modal-header h2 {
+            font-family: var(--heading-font);
+            font-size: 2.2rem;
+        }
+
+        /* Special Message Boxes */
+        .special-message {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.2));
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid var(--sunflower-yellow);
+            text-align: left;
+            font-family: var(--body-font);
+            font-size: 1.4rem;
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-message::before {
+            content: '💭';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+
+        /* Love Letter */
+        .love-letter {
+            background: #fffaf0;
+            color: #8b0000;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+            border: 2px dashed #ff69b4;
+            position: relative;
+        }
+
+        .love-letter::before {
+            content: '✉️';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .garden-grid {
@@ -748,11 +849,11 @@
             }
             
             .garden-title {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .garden-subtitle {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .garden-grid {
@@ -772,7 +873,7 @@
             }
             
             .welcome-text {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .gallery-container {
@@ -780,11 +881,20 @@
                 gap: 10px;
                 padding: 15px;
             }
+            
+            .bubble {
+                font-size: 1.5rem;
+                padding: 15px 25px;
+            }
+            
+            .text {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 480px) {
             .garden-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .garden-grid {
@@ -806,6 +916,18 @@
             
             .gallery-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .welcome-text {
+                font-size: 1.3rem;
+            }
+            
+            .bubble {
+                font-size: 1.3rem;
+            }
+            
+            .text {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -836,8 +958,8 @@
             <div class="modal-body">
                 <p id="modalDescription" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;"></p>
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
-                    <h3 style="color: var(--garden-green); margin-bottom: 10px;">💌 Special Message:</h3>
-                    <p id="modalMessage" style="font-style: italic;"></p>
+                    <h3 style="color: var(--garden-green); margin-bottom: 10px; font-family: var(--heading-font);">💌 Special Message:</h3>
+                    <p id="modalMessage" style="font-style: italic; font-size: 1.1rem;"></p>
                 </div>
             </div>
         </div>
@@ -845,9 +967,9 @@
 
     <!-- Gardener's Note -->
     <div class="gardener-note">
-        <h3><i class="fas fa-seedling"></i> Gardener's Note</h3>
+        <h3 style="font-family: var(--heading-font);"><i class="fas fa-seedling"></i> Gardener's Note</h3>
         <p>Dear Lakshita, each flower in this garden holds a special meaning just for you. Complete the garden to unlock Valentine's Week! 🌸</p>
-        <p style="text-align: right; margin-top: 10px; font-style: italic;">- Aishwary 💙</p>
+        <p style="text-align: right; margin-top: 10px; font-style: italic; font-family: var(--special-font);">- Aishwary 💙</p>
     </div>
 
     <div class="container">
@@ -870,6 +992,8 @@
                     Welcome to your very own magical garden! 🌿<br>
                     Each flower here represents a special feeling, memory, or wish I have for you.<br><br>
                     Plant all 12 flowers to unlock your complete Valentine's Week surprise...
+                    <br><br>
+                    P.S. I've been thinking about you more than usual today. There's something about you that makes my world brighter, and I wanted to create something special to show you just how much you mean to me.
                 </div>
                 <div class="signature">
                     With all my love,<br>
@@ -894,6 +1018,12 @@
                 <div style="text-align: center; margin-top: 10px; font-size: 1.1rem;" id="progressText">
                     Plant your first flower to begin! 🌱
                 </div>
+            </div>
+
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-sparkles" style="color: var(--sunflower-yellow); margin-right: 10px;"></i>
+                <strong>Did you know?</strong> Every flower you plant here grows from a real thought or feeling I have about you. This isn't just a virtual garden - it's a collection of all the beautiful emotions you inspire in me.
             </div>
 
             <!-- Garden Info Panel -->
@@ -960,13 +1090,20 @@
                 Each day from February 7th to 14th has a special surprise just for you!
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-heart" style="color: var(--heart-color); margin-right: 10px;"></i>
+                <strong>My Dearest Lakshita,</strong><br>
+                Creating this for you has been one of the most joyful experiences. I wanted to give you something that shows how much I cherish every moment we share, every laugh, every conversation. You're not just special to me - you're extraordinary.
+            </div>
+            
             <!-- Complete Valentine's Week Calendar -->
             <div class="week-calendar" id="weekCalendar">
                 <!-- Will be populated by JavaScript -->
             </div>
             
             <div class="interactive-zone">
-                <div class="text" style="font-size: 1.8rem; margin-bottom: 20px;">
+                <div class="text" style="font-size: 1.8rem; margin-bottom: 20px; font-family: var(--heading-font);">
                     <i class="fas fa-heart"></i> Complete Valentine's Week Surprise! <i class="fas fa-heart"></i>
                 </div>
                 <div class="clickable-heart" onclick="createHeartExplosion()">
@@ -998,6 +1135,12 @@
                 Here's a virtual rose garden just for you!
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-quote-left" style="color: var(--rose-pink); margin-right: 10px;"></i>
+                Lakshita, do you know why roses are so special? It's because they have layers, just like you. Each layer reveals more beauty, more depth, more wonder. And just like a rose, you leave a beautiful fragrance in the lives of everyone you meet.
+            </div>
+            
             <div class="interactive-zone">
                 <div style="font-size: 60px; margin-bottom: 20px;">
                     🌹🌹🌹<br>
@@ -1007,6 +1150,14 @@
                 <button onclick="growRoses()" style="background: linear-gradient(135deg, var(--rose-pink), #ff66b2);">
                     <i class="fas fa-seedling"></i> Grow More Roses
                 </button>
+            </div>
+            
+            <!-- Love Letter -->
+            <div class="love-letter">
+                <p><strong>My Rose Day Letter to You:</strong></p>
+                <p>Dear Lakshita,</p>
+                <p>If I could give you a rose for every time you made me smile, the entire world would be a garden. You have this incredible ability to brighten even the dullest days. Today, on Rose Day, I want you to know that you are more beautiful, more precious, and more loved than the rarest rose in any garden.</p>
+                <p>Forever yours,<br>Aishwary 💙</p>
             </div>
             
             <div class="buttons">
@@ -1027,11 +1178,17 @@
                 You're the best thing that could happen to anyone.
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-gem" style="color: var(--sunflower-yellow); margin-right: 10px;"></i>
+                <strong>A Real Talk:</strong> Lakshita, I don't need a special day to tell you how incredible you are. But since it's Propose Day, let me say this clearly: You are the kind of person people write stories about - strong, kind, beautiful, and endlessly inspiring. My life is better because you're in it.
+            </div>
+            
             <div class="interactive-zone">
                 <div style="font-size: 70px; margin-bottom: 20px;">
                     💍✨💖
                 </div>
-                <div class="text" style="font-size: 1.3rem; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                <div class="text" style="font-size: 1.5rem; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; font-family: var(--special-font);">
                     "Will you keep making me the happiest person?"<br>
                     - Aishwary 💙
                 </div>
@@ -1053,6 +1210,12 @@
             <div class="text">
                 You're sweeter than the sweetest chocolate!<br>
                 Here's a virtual chocolate box for you!
+            </div>
+            
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-candy-cane" style="color: #8B4513; margin-right: 10px;"></i>
+                <strong>Sweet Thoughts:</strong> You know what's sweeter than chocolate? Your laughter. Your kindness. The way you care about people. Chocolate melts in your mouth, but you melt my heart every single day.
             </div>
             
             <div class="gallery-container">
@@ -1091,6 +1254,12 @@
                 that you're loved and cared for!
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-stuffed-teddy" style="color: #DEB887; margin-right: 10px;"></i>
+                <strong>My Promise:</strong> Just like this teddy is always here for virtual hugs, I want you to know that I'm always here for you - to listen, to support, to celebrate your victories and comfort you through challenges. You're never alone.
+            </div>
+            
             <div class="interactive-zone">
                 <div style="font-size: 80px; margin-bottom: 20px;">
                     🧸💖🧸
@@ -1126,6 +1295,12 @@
                 Some promises from my heart to yours...
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-handshake" style="color: #9370DB; margin-right: 10px;"></i>
+                <strong>Beyond Promises:</strong> Promises are easy to make but hard to keep. So here's my commitment to you: I will always be honest with you, respect you, appreciate you, and cherish the incredible person you are. Not just today, but every day.
+            </div>
+            
             <div class="gallery-container">
                 <div class="memory-item" onclick="showPromise(this)">
                     <span class="memory-emoji">✨</span>
@@ -1144,6 +1319,15 @@
                 </div>
             </div>
             
+            <!-- More Promises -->
+            <div class="special-message" style="margin-top: 20px;">
+                <strong>More Promises:</strong><br>
+                1. I promise to always listen, even when you're just sharing little things about your day.<br>
+                2. I promise to celebrate your successes as if they were my own.<br>
+                3. I promise to remember what makes you special, even on ordinary days.<br>
+                4. I promise to be your safe space, always.
+            </div>
+            
             <div class="buttons">
                 <button onclick="nextPage(8)">
                     <i class="fas fa-people-holding-hands"></i> Next: Hug Day 🤗
@@ -1160,6 +1344,12 @@
             <div class="text">
                 Sending you the warmest, tightest virtual hug!<br>
                 Click below to receive hugs!
+            </div>
+            
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-people-holding-hands" style="color: #FFB6C1; margin-right: 10px;"></i>
+                <strong>A Hug From Me:</strong> If I could give you a real hug right now, it would be the kind that says "I appreciate you," "I'm here for you," and "You matter to me" all at once. Since I can't be there physically, please accept these virtual hugs filled with all my affection and care.
             </div>
             
             <div class="interactive-zone">
@@ -1191,6 +1381,12 @@
                 Sending you virtual kisses filled with love and affection!
             </div>
             
+            <!-- Special Message -->
+            <div class="special-message">
+                <i class="fas fa-lips" style="color: #FF1493; margin-right: 10px;"></i>
+                <strong>More Than Just a Kiss:</strong> These virtual kisses represent all the affection, admiration, and deep care I have for you. Each one carries a wish for your happiness, a hope for your dreams, and a reminder that you are truly special.
+            </div>
+            
             <div class="interactive-zone">
                 <div style="font-size: 60px; margin-bottom: 20px;">
                     💋💋💋<br>
@@ -1218,13 +1414,22 @@
                 <i class="fas fa-images"></i> Valentine's Day & Memory Gallery 💞
             </div>
             <div class="bubble">Happy Valentine's Day, Lakshita! 💕</div>
-            <div class="text" style="font-size: 1.8rem; line-height: 2;">
+            <div class="text" style="font-size: 1.8rem; line-height: 2; font-family: var(--body-font);">
                 To the most amazing person,<br><br>
                 You complete my world in ways I can't explain.<br>
                 Every day with you feels like Valentine's Day!<br><br>
                 Thank you for being YOU! ✨<br><br>
                 With all my love,<br>
-                <span style="font-size: 2rem; color: var(--garden-light);">Aishwary 💙</span>
+                <span style="font-size: 2.5rem; color: var(--garden-light); font-family: var(--special-font);">Aishwary 💙</span>
+            </div>
+            
+            <!-- Special Final Message -->
+            <div class="special-message" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));">
+                <i class="fas fa-crown" style="color: #FFD700; margin-right: 10px;"></i>
+                <strong>My Final Words for You:</strong><br>
+                Lakshita, creating this journey for you has been my pleasure. I want you to know that you deserve all the love, happiness, and beautiful moments life can offer. Never forget how incredible you are. You light up rooms, you inspire people, and you make the world a better place just by being in it.
+                <br><br>
+                Today and every day, remember that you are loved, you are valued, and you are truly extraordinary.
             </div>
             
             <div class="gallery-container" id="memoryGallery">
@@ -1244,6 +1449,16 @@
                 <button onclick="fillLove()" style="margin-top: 20px;">
                     <i class="fas fa-heart"></i> Fill Our Love
                 </button>
+            </div>
+            
+            <!-- Final Love Letter -->
+            <div class="love-letter" style="margin-top: 30px;">
+                <p><strong>My Valentine's Letter:</strong></p>
+                <p>My Dearest Lakshita,</p>
+                <p>As this Valentine's journey comes to an end, I want you to know that my appreciation for you has no end. You are the kind of person who makes people believe in good things, in beautiful connections, in meaningful relationships.</p>
+                <p>Thank you for being you - authentic, wonderful, and absolutely irreplaceable. I hope this digital garden and Valentine's Week brought a smile to your face, because your smile is one of my favorite things in the world.</p>
+                <p>You are loved today, tomorrow, and always.</p>
+                <p>With all my heart,<br>Aishwary 💙</p>
             </div>
             
             <div class="buttons">
@@ -1295,66 +1510,70 @@
             { day: 8, date: "Feb 14", name: "Valentine's Day", emoji: "❤️", color: "#ff0000" }
         ];
 
-        // Flower Data
+        // Enhanced Flower Data with more messages
         const flowers = [
             { id: 1, name: "Rose of Affection", emoji: "🌹", type: "flower-rose", color: "#FF69B4", 
               description: "The classic symbol of love and admiration",
-              message: "Like this rose, my affection for you blooms endlessly. You're always in my thoughts, Lakshita.",
+              message: "Like this rose, my affection for you blooms endlessly. You're always in my thoughts, Lakshita. Every time I see a rose, I'm reminded of your beauty and grace.",
               seedEmoji: "🌱" },
             { id: 2, name: "Sunflower of Joy", emoji: "🌻", type: "flower-sunflower", color: "#FFD700",
               description: "Bright and cheerful, always facing the sun",
-              message: "Your smile lights up my world like a sunflower follows the sun. Stay joyful always!",
+              message: "Your smile lights up my world like a sunflower follows the sun. Stay joyful always! I hope you know how much happiness you bring to those around you, including me.",
               seedEmoji: "🌱" },
             { id: 3, name: "Lily of Purity", emoji: "🌸", type: "flower-lily", color: "#FFFAFA",
               description: "Symbol of purity, innocence, and beauty",
-              message: "Your pure heart and kind soul inspire me every day. You're truly beautiful inside and out.",
+              message: "Your pure heart and kind soul inspire me every day. You're truly beautiful inside and out. In a world that can sometimes be complicated, your genuineness is refreshing.",
               seedEmoji: "🌱" },
             { id: 4, name: "Tulip of Perfect Love", emoji: "🌷", type: "flower-tulip", color: "#DA70D6",
               description: "Represents perfect, deep love",
-              message: "My love for you is as perfect and complete as this tulip's elegant form.",
+              message: "My admiration for you is as perfect and complete as this tulip's elegant form. You deserve nothing less than perfect love and respect.",
               seedEmoji: "🌱" },
             { id: 5, name: "Daisy of Innocence", emoji: "🌼", type: "flower-daisy", color: "#87CEEB",
               description: "Symbol of innocence, loyalty, and new beginnings",
-              message: "Your innocence and genuine spirit are refreshing like a field of daisies.",
+              message: "Your innocence and genuine spirit are refreshing like a field of daisies. You have this wonderful way of seeing the good in people and situations.",
               seedEmoji: "🌱" },
             { id: 6, name: "Lavender of Devotion", emoji: "💜", type: "flower-lavender", color: "#E6E6FA",
               description: "Represents devotion, serenity, and grace",
-              message: "I am devoted to making you happy, just as lavender brings calm and peace.",
+              message: "I am devoted to appreciating your wonderful qualities, just as lavender brings calm and peace. You handle everything with such grace.",
               seedEmoji: "🌱" },
             { id: 7, name: "Orchid of Luxury", emoji: "💐", type: "flower-orchid", color: "#BA55D3",
               description: "Symbol of luxury, beauty, and strength",
-              message: "You deserve all the luxury and beauty in the world. You're as rare and precious as an orchid.",
+              message: "You deserve all the luxury and beauty in the world. You're as rare and precious as an orchid, with a strength that's truly admirable.",
               seedEmoji: "🌱" },
             { id: 8, name: "Carnation of Admiration", emoji: "🌺", type: "flower-carnation", color: "#FF1493",
               description: "Represents admiration, gratitude, and love",
-              message: "I admire your strength, your kindness, and everything that makes you uniquely you.",
+              message: "I admire your strength, your kindness, and everything that makes you uniquely you. Thank you for being such an incredible person.",
               seedEmoji: "🌱" },
             { id: 9, name: "Forget-me-not of Memories", emoji: "🔵", type: "flower-daisy", color: "#4169E1",
               description: "Symbol of true love and lasting memories",
-              message: "Every moment with you becomes a precious memory I'll never forget.",
+              message: "Every moment with you becomes a precious memory I'll never forget. Whether we're talking or just sharing silence, those moments matter.",
               seedEmoji: "🌱" },
             { id: 10, name: "Jasmine of Sweetness", emoji: "⭐", type: "flower-lily", color: "#F8F8FF",
               description: "Represents sweetness, elegance, and grace",
-              message: "Your sweet nature makes every day brighter and more beautiful.",
+              message: "Your sweet nature makes every day brighter and more beautiful. You have this natural elegance that people are drawn to.",
               seedEmoji: "🌱" },
             { id: 11, name: "Peony of Prosperity", emoji: "🌺", type: "flower-rose", color: "#FFB6C1",
               description: "Symbol of prosperity, good fortune, and happy marriage",
-              message: "I wish you all the prosperity, happiness, and good fortune life can offer.",
+              message: "I wish you all the prosperity, happiness, and good fortune life can offer. You deserve every good thing that comes your way.",
               seedEmoji: "🌱" },
             { id: 12, name: "Lotus of Enlightenment", emoji: "🪷", type: "flower-lily", color: "#FFC0CB",
               description: "Represents purity, enlightenment, and rebirth",
-              message: "You have a wise and enlightened soul that inspires everyone around you.",
+              message: "You have a wise and enlightened soul that inspires everyone around you. You see things clearly and handle situations with such maturity.",
               seedEmoji: "🌱" }
         ];
 
-        // Memories for gallery
+        // Enhanced Memories for gallery
         const memories = [
-            { emoji: "🌟", title: "First Meeting", desc: "The day stars aligned" },
-            { emoji: "😊", title: "First Smile", desc: "That unforgettable smile" },
-            { emoji: "💬", title: "Long Talks", desc: "Hours that felt like minutes" },
-            { emoji: "🎉", title: "Celebrations", desc: "Every moment with you" },
-            { emoji: "🌅", title: "Beautiful Sunsets", desc: "Watching skies together" },
-            { emoji: "🤝", title: "Understanding", desc: "Heart-to-heart connections" }
+            { emoji: "🌟", title: "First Meeting", desc: "The day stars aligned. I knew right away you were someone special." },
+            { emoji: "😊", title: "First Smile", desc: "That unforgettable smile that made my day complete. It still does." },
+            { emoji: "💬", title: "Long Talks", desc: "Hours that felt like minutes because talking to you is so easy and natural." },
+            { emoji: "🎉", title: "Celebrations", desc: "Every achievement of yours feels like my own because I genuinely want the best for you." },
+            { emoji: "🌅", title: "Beautiful Sunsets", desc: "Watching skies together, whether in person or sharing pictures. Beauty shared is beauty doubled." },
+            { emoji: "🤝", title: "Understanding", desc: "Those heart-to-heart connections where words aren't even needed. You just get it." },
+            { emoji: "😂", title: "Shared Laughter", desc: "Those moments when we both find the same thing hilarious. Laughter is our common language." },
+            { emoji: "🤔", title: "Deep Conversations", desc: "Talking about life, dreams, fears, and hopes. You make it safe to be vulnerable." },
+            { emoji: "🎵", title: "Music Moments", desc: "Sharing songs that remind us of each other or special moments. Music connects us." },
+            { emoji: "🌈", title: "Colorful Moments", desc: "All the vibrant, beautiful experiences we've shared, directly or indirectly." }
         ];
 
         // ============ GARDEN FUNCTIONS ============
@@ -1403,6 +1622,17 @@
             plot.classList.add('planted');
             plot.querySelector('.plot-desc').textContent = 'Planted!';
             
+            // Add a special message when planting
+            const specialMessages = [
+                "Another beautiful addition to your garden, just like you're a beautiful addition to my life.",
+                "This flower grows from the admiration I have for you.",
+                "Every flower in this garden represents a reason why you're amazing.",
+                "Planting this for you feels like planting hope and beauty."
+            ];
+            
+            const randomMessage = specialMessages[Math.floor(Math.random() * specialMessages.length)];
+            showFloatingMessage(randomMessage, flower.color);
+            
             // Update progress
             updateGardenProgress();
             
@@ -1410,9 +1640,40 @@
             setTimeout(() => showFlowerInfo(flower), 500);
         }
 
+        function showFloatingMessage(message, color) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.style.position = 'fixed';
+            messageDiv.style.top = '50%';
+            messageDiv.style.left = '50%';
+            messageDiv.style.transform = 'translate(-50%, -50%)';
+            messageDiv.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            messageDiv.style.color = color || 'white';
+            messageDiv.style.padding = '15px 25px';
+            messageDiv.style.borderRadius = '15px';
+            messageDiv.style.fontSize = '1.2rem';
+            messageDiv.style.fontFamily = 'var(--special-font)';
+            messageDiv.style.zIndex = '1003';
+            messageDiv.style.textAlign = 'center';
+            messageDiv.style.maxWidth = '80%';
+            messageDiv.style.boxShadow = '0 0 20px rgba(255,255,255,0.3)';
+            messageDiv.style.border = '2px solid ' + (color || 'white');
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                messageDiv.style.transition = 'opacity 1s';
+                setTimeout(() => messageDiv.remove(), 1000);
+            }, 2000);
+        }
+
         function plantRandomFlower() {
             const unplantedFlowers = flowers.filter(f => !plantedFlowers.includes(f.id));
-            if (unplantedFlowers.length === 0) return;
+            if (unplantedFlowers.length === 0) {
+                showFloatingMessage("Your garden is already complete! Time to begin Valentine's Week! 🌸", "#FF69B4");
+                return;
+            }
             
             const randomFlower = unplantedFlowers[Math.floor(Math.random() * unplantedFlowers.length)];
             plantFlower(randomFlower.id);
@@ -1446,11 +1707,22 @@
             if (flowersPlanted === 0) {
                 progressText.innerHTML = 'Plant your first flower to begin! 🌱';
             } else if (flowersPlanted < totalFlowers) {
-                progressText.innerHTML = `${flowersPlanted} of ${totalFlowers} flowers planted! Keep going! 🌸`;
+                const encouragingMessages = [
+                    `${flowersPlanted} of ${totalFlowers} flowers planted! You're creating something beautiful! 🌸`,
+                    `${flowersPlanted} flowers blooming! Each one represents something special about you! 💐`,
+                    `Your garden is ${Math.round(progress)}% complete! Keep going! 🌿`,
+                    `${flowersPlanted} beautiful flowers planted! You're almost there! 🌺`
+                ];
+                progressText.innerHTML = encouragingMessages[Math.floor(Math.random() * encouragingMessages.length)];
             } else {
                 progressText.innerHTML = '🎉 Amazing! Your garden is complete! Time for Valentine\'s Week! 💖';
                 document.getElementById('continueBtn').style.display = 'flex';
                 createGardenCelebration();
+                
+                // Show special completion message
+                setTimeout(() => {
+                    showFloatingMessage("You did it! Your garden is perfect, just like you! 💐", "#FFD700");
+                }, 500);
             }
             
             // Update flower count
@@ -1458,7 +1730,7 @@
         }
 
         function createGardenCelebration() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const flower = document.createElement('div');
                     const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
@@ -1471,24 +1743,31 @@
                     flower.style.animation = `floatElement ${Math.random() * 3 + 2}s linear forwards`;
                     flower.style.color = randomFlower.color;
                     flower.style.opacity = '0.8';
+                    flower.style.textShadow = '0 0 10px white';
                     
                     document.body.appendChild(flower);
                     setTimeout(() => flower.remove(), 5000);
-                }, i * 100);
+                }, i * 50);
             }
+            
+            // Add a special message
+            setTimeout(() => {
+                showFloatingMessage("Congratulations! Your beautiful garden is complete! 🌸💖", "#FF69B4");
+            }, 1000);
         }
 
         function exploreGarden() {
             if (plantedFlowers.length === 0) {
-                alert("Your garden is empty! Plant some flowers first 🌱");
+                showFloatingMessage("Your garden is empty! Plant some flowers first 🌱", "#98FB98");
                 return;
             }
             
-            let message = "🌸 Your Beautiful Garden 🌸\n\n";
+            let message = "🌸 Lakshita's Beautiful Garden 🌸\n\n";
             plantedFlowers.forEach(flowerId => {
                 const flower = flowers.find(f => f.id === flowerId);
-                message += `${flower.emoji} ${flower.name}: ${flower.description}\n\n`;
+                message += `${flower.emoji} ${flower.name}\n${flower.description}\n\n`;
             });
+            message += "Each flower represents a special thought about you. 💖";
             
             alert(message);
         }
@@ -1499,7 +1778,7 @@
                 plantedFlowers = [];
                 initGarden();
                 document.getElementById('continueBtn').style.display = 'none';
-                alert("Your garden has been reset! Ready to plant new flowers? 🌱");
+                showFloatingMessage("Your garden has been reset! Ready to plant new flowers? 🌱", "#98FB98");
             }
         }
 
@@ -1549,7 +1828,7 @@
             
             // Check if garden is complete for Valentine's Week access
             if (pageNumber >= 2 && flowersPlanted < totalFlowers && pageNumber !== 10) {
-                alert(`Please complete your flower garden first to unlock Valentine's Week! 🌸\n\nYou have planted ${flowersPlanted} of ${totalFlowers} flowers.`);
+                showFloatingMessage(`Please complete your flower garden first! 🌸\n\nYou have planted ${flowersPlanted} of ${totalFlowers} flowers.`, "#FF69B4");
                 return;
             }
             
@@ -1570,6 +1849,7 @@
             // Special effects for certain pages
             if (pageNumber === 2) { // Valentine's Week intro
                 createWeekCalendar();
+                showFloatingMessage("Welcome to your Valentine's Week journey! 💖", "#FF69B4");
             } else if (pageNumber === 10) { // Gallery page
                 createMemoryGallery();
             }
@@ -1590,6 +1870,7 @@
             heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
             heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
             heart.style.color = `hsl(${Math.random() * 360}, 100%, 65%)`;
+            heart.style.textShadow = '0 0 10px rgba(255,255,255,0.5)';
             
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 7000);
@@ -1623,6 +1904,7 @@
                 butterfly.style.top = Math.random() * 100 + 'vh';
                 butterfly.style.fontSize = (Math.random() * 15 + 20) + 'px';
                 butterfly.style.animationDuration = (Math.random() * 20 + 20) + 's';
+                butterfly.style.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
                 
                 document.body.appendChild(butterfly);
                 setTimeout(() => butterfly.remove(), 25000);
@@ -1631,9 +1913,11 @@
 
         // ============ VALENTINE'S WEEK INTERACTIONS ============
         function createHeartExplosion() {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => createHeart(), i * 50);
             }
+            
+            showFloatingMessage("Love is in the air! 💘", "#FF69B4");
         }
 
         function growRoses() {
@@ -1644,11 +1928,17 @@
             rose.style.display = 'inline-block';
             rose.style.animation = 'floatElement 3s ease-in-out infinite';
             rose.style.margin = '0 5px';
+            rose.style.filter = 'drop-shadow(0 0 5px rgba(255,0,0,0.5))';
             garden.prepend(rose);
             
             setTimeout(() => {
-                rose.remove();
-            }, 5000);
+                rose.style.opacity = '0';
+                rose.style.transform = 'translateY(-50px)';
+                rose.style.transition = 'all 1s';
+                setTimeout(() => rose.remove(), 1000);
+            }, 4000);
+            
+            showFloatingMessage("A rose for your beauty! 🌹", "#FF69B4");
         }
 
         function eatChocolate(element) {
@@ -1663,8 +1953,16 @@
             chocolateEffect.style.position = 'absolute';
             chocolateEffect.style.fontSize = '30px';
             chocolateEffect.style.animation = 'floatElement 1s ease-out forwards';
+            chocolateEffect.style.zIndex = '1003';
             document.body.appendChild(chocolateEffect);
             setTimeout(() => chocolateEffect.remove(), 1000);
+            
+            const messages = [
+                "Sweet! Just like you! 🍬",
+                "Delicious! Hope you enjoyed it! 😋",
+                "Yum! Virtual chocolate calories don't count! 🍫"
+            ];
+            showFloatingMessage(messages[Math.floor(Math.random() * messages.length)], "#8B4513");
         }
 
         function cuddleTeddy() {
@@ -1681,8 +1979,15 @@
                 
                 if (cuddleLevel >= 100) {
                     setTimeout(() => {
-                        alert('Teddy is super happy and cuddled! 🧸💖');
+                        showFloatingMessage("Teddy is super happy and cuddled! You're a natural! 🧸💖", "#DEB887");
                     }, 300);
+                } else {
+                    const messages = [
+                        "Aww! Teddy loves your hugs! 🧸",
+                        "Such a warm hug! 🤗",
+                        "Teddy feels so loved! 💖"
+                    ];
+                    showFloatingMessage(messages[Math.floor(Math.random() * messages.length)], "#DEB887");
                 }
             }
         }
@@ -1695,15 +2000,20 @@
             hugHeart.style.transform = 'scale(1.5)';
             setTimeout(() => hugHeart.style.transform = 'scale(1)', 300);
             
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 5; i++) {
                 const hugEmoji = document.createElement('div');
                 hugEmoji.innerHTML = '🤗';
                 hugEmoji.style.position = 'absolute';
                 hugEmoji.style.fontSize = '30px';
-                hugEmoji.style.left = `${50 + Math.random() * 20}%`;
+                hugEmoji.style.left = `${40 + Math.random() * 20}%`;
                 hugEmoji.style.animation = `floatElement 1s ease-out forwards`;
+                hugEmoji.style.zIndex = '1003';
                 document.body.appendChild(hugEmoji);
                 setTimeout(() => hugEmoji.remove(), 1000);
+            }
+            
+            if (hugCount % 5 === 0) {
+                showFloatingMessage(`${hugCount} hugs sent! You're officially a hug expert! 🫂`, "#FFB6C1");
             }
         }
 
@@ -1711,7 +2021,7 @@
             kissCount++;
             document.getElementById('kissCounter').textContent = `Kisses sent: ${kissCount}`;
             
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 7; i++) {
                 setTimeout(() => {
                     const kiss = document.createElement('div');
                     kiss.innerHTML = '💋';
@@ -1720,9 +2030,15 @@
                     kiss.style.left = `${30 + Math.random() * 40}%`;
                     kiss.style.animation = `floatElement 1.5s ease-out forwards`;
                     kiss.style.color = '#FF1493';
+                    kiss.style.zIndex = '1003';
+                    kiss.style.filter = 'drop-shadow(0 0 5px rgba(255,20,147,0.5))';
                     document.body.appendChild(kiss);
                     setTimeout(() => kiss.remove(), 1500);
                 }, i * 100);
+            }
+            
+            if (kissCount % 7 === 0) {
+                showFloatingMessage(`${kissCount} kisses delivered! 💋💖`, "#FF1493");
             }
         }
 
@@ -1736,35 +2052,65 @@
                 
                 if (loveLevel >= 100) {
                     setTimeout(() => {
-                        alert('Our love is complete! 💖 Thank you for being amazing, Lakshita!');
+                        showFloatingMessage("Our connection is complete! 💖 Thank you for being amazing, Lakshita!", "#ff0066");
                     }, 500);
+                } else {
+                    const messages = [
+                        "Growing our connection! 🌱",
+                        "Stronger every moment! 💪",
+                        "Beautiful bond! ✨",
+                        "Meant to be connected! 💞"
+                    ];
+                    showFloatingMessage(messages[Math.floor(Math.random() * messages.length)], "#ff0066");
                 }
             }
         }
 
         function showPromise(element) {
             const promiseText = element.querySelector('.memory-title').textContent;
-            alert(`Promise: I will ${promiseText.toLowerCase()} 💝`);
+            const promiseMessages = {
+                "Always Support": "I promise to always be there for you, through good times and challenges. You'll never have to face anything alone.",
+                "Make You Smile": "I promise to find ways to make you smile every single day, because your happiness matters to me.",
+                "Love Unconditionally": "I promise to appreciate you exactly as you are, without conditions or expectations."
+            };
+            
+            alert(`Promise: ${promiseText}\n\n${promiseMessages[promiseText] || "This is my sincere promise to you."} 💝`);
         }
 
         function viewMemory(index) {
             const memory = memories[index];
-            alert(`Memory: ${memory.title}\n\n${memory.desc}\n\nThis memory is precious because it's with you! ✨`);
+            const memoryDetails = [
+                "This memory is precious because it's with you! ✨ Every moment shared with you becomes special.",
+                "I cherish this memory because it showed me how wonderful you are. 🌟",
+                "This moment reminded me why you're so important in my life. 💖",
+                "Even simple moments become extraordinary when they're with you. 🌈",
+                "This memory is stored in my heart forever. Thank you for this beautiful moment. 💝"
+            ];
+            
+            const randomDetail = memoryDetails[Math.floor(Math.random() * memoryDetails.length)];
+            alert(`Memory: ${memory.title}\n\n${memory.desc}\n\n${randomDetail}`);
         }
 
         function showSurprise() {
             createHeartExplosion();
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => createHeart(), i * 50);
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => createHeart(), i * 30);
             }
             
             setTimeout(() => {
-                alert("🎁 Special Surprise! 🎁\n\nYou've completed the entire Valentine's journey!\nThank you for exploring every page, Lakshita!\n\nYou're truly special and deserve all the happiness in the world! 💖");
-            }, 1000);
+                const surpriseMessages = [
+                    "🎁 Special Surprise! 🎁\n\nYou've completed the entire Valentine's journey!\nThank you for exploring every page, Lakshita!\n\nYou're truly special and deserve all the happiness in the world! 💖",
+                    "🎉 Congratulations! 🎉\n\nYou've experienced the complete Valentine's journey!\nI hope this brought a smile to your face.\n\nRemember: You are loved, valued, and absolutely amazing! ✨",
+                    "🌟 Amazing! 🌟\n\nYou've completed the garden and the entire Valentine's Week!\nThank you for being such a wonderful person.\n\nMay your life be filled with as much joy as you've brought to mine! 💝"
+                ];
+                
+                const randomMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+                alert(randomMessage);
+            }, 1500);
         }
 
         function restartJourney() {
-            if (confirm("Start the entire journey from the beginning?")) {
+            if (confirm("Would you like to experience this beautiful journey from the beginning?")) {
                 // Reset all variables
                 flowersPlanted = 0;
                 plantedFlowers = [];
@@ -1788,6 +2134,8 @@
                 
                 // Go back to garden page
                 nextPage(1);
+                
+                showFloatingMessage("Welcome back to the beginning! Ready to create magic again? ✨", "#FFD700");
             }
         }
 
@@ -1796,9 +2144,11 @@
             if (musicPlaying) {
                 backgroundMusic.pause();
                 musicIcon.className = 'fas fa-volume-mute';
+                showFloatingMessage("Music paused ⏸️", "#FFFFFF");
             } else {
                 backgroundMusic.play().catch(e => console.log("Autoplay prevented:", e));
                 musicIcon.className = 'fas fa-music';
+                showFloatingMessage("Music playing 🎵", "#FFFFFF");
             }
             musicPlaying = !musicPlaying;
         });
@@ -1811,8 +2161,14 @@
             // Create garden atmosphere
             createGardenAtmosphere();
             
+            // Show welcome message
+            setTimeout(() => {
+                showFloatingMessage("Welcome to your magical garden, Lakshita! 🌸", "#FF69B4");
+            }, 1000);
+            
             // Try to play music
             setTimeout(() => {
+                backgroundMusic.volume = 0.5;
                 backgroundMusic.play().then(() => {
                     musicPlaying = true;
                     musicIcon.className = 'fas fa-music';
@@ -1820,8 +2176,9 @@
                     console.log("Autoplay prevented. User interaction required.");
                     musicPlaying = false;
                     musicIcon.className = 'fas fa-volume-mute';
+                    showFloatingMessage("Click the music note to start the music! 🎵", "#FFFFFF");
                 });
-            }, 1000);
+            }, 1500);
             
             // Add keyboard navigation
             document.addEventListener('keydown', function(e) {
@@ -1837,6 +2194,21 @@
                     }
                 } else if (e.key === 'Escape') {
                     nextPage(1); // Back to garden
+                } else if (e.key === 'm' || e.key === 'M') {
+                    // Toggle music with M key
+                    document.getElementById('musicToggle').click();
+                }
+            });
+            
+            // Add click anywhere to create hearts
+            document.addEventListener('click', function(e) {
+                // Don't create hearts if clicking on interactive elements
+                if (!e.target.closest('button') && !e.target.closest('.clickable-heart') && 
+                    !e.target.closest('.memory-item') && !e.target.closest('.day-box') &&
+                    !e.target.closest('.garden-plot') && !e.target.closest('.music-control')) {
+                    if (Math.random() > 0.7) { // 30% chance
+                        createHeart();
+                    }
                 }
             });
         });
