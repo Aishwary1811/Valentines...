@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Days of Love</title>
-    <meta name="description" content="A simple Valentine's Week journey.">
+    <title>7 Days of Love with Animated Bear</title>
+    <meta name="description" content="A Valentine's Week journey with animated bear character.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
@@ -16,11 +16,8 @@
             --pink-accent: #e67783;
             --heart: #e5737c;
             --text-dark: #5b2d32;
-            --green: #2E8B57;
-            --yellow: #FFD700;
-            --purple: #DA70D6;
-            --blue: #87CEEB;
-            --rose: #FF69B4;
+            --bear-brown: #8B4513;
+            --bear-light: #A0522D;
         }
 
         * {
@@ -39,7 +36,7 @@
             align-items: center;
             padding: 20px;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         body::before {
@@ -93,184 +90,396 @@
         }
 
         .art {
-            width: min(300px, 70vw);
+            width: min(400px, 80vw);
             margin: 0 auto;
             position: relative;
-            height: 250px;
+            height: 300px;
             margin-bottom: 30px;
         }
 
-        .art img {
-            width: 100%;
-            display: block;
-            border-radius: 10px;
-        }
-
-        /* Animated Bear */
-        .bear-character {
+        /* Advanced Animated Bear Character */
+        .bear-container {
             position: absolute;
-            width: 120px;
-            height: 140px;
+            width: 200px;
+            height: 300px;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            animation: floatBear 3s ease-in-out infinite;
         }
 
+        /* Bear Body with smooth animations */
+        .bear-body {
+            position: absolute;
+            width: 120px;
+            height: 140px;
+            background: var(--bear-brown);
+            border-radius: 60px 60px 30px 30px;
+            bottom: 0;
+            left: 40px;
+            animation: bodyBreathe 3s ease-in-out infinite;
+            box-shadow: 
+                inset -10px -10px 0 rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        @keyframes bodyBreathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Bear Head */
         .bear-head {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            background: #8B4513;
+            width: 100px;
+            height: 100px;
+            background: var(--bear-brown);
             border-radius: 50%;
-            top: 0;
-            left: 20px;
-            box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.1);
+            bottom: 120px;
+            left: 50px;
+            z-index: 3;
+            animation: headBob 4s ease-in-out infinite;
+            box-shadow: 
+                inset -8px -8px 0 rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        @keyframes headBob {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            75% { transform: translateY(-3px) rotate(-2deg); }
+        }
+
+        /* Ears */
         .bear-ear {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background: #8B4513;
+            width: 35px;
+            height: 35px;
+            background: var(--bear-brown);
             border-radius: 50%;
             top: -10px;
+            z-index: 2;
+            animation: earTwitch 3s ease-in-out infinite;
         }
 
-        .bear-ear.left { left: 15px; }
-        .bear-ear.right { right: 15px; }
+        .bear-ear.left {
+            left: 15px;
+            animation-delay: 0.5s;
+        }
 
+        .bear-ear.right {
+            right: 15px;
+        }
+
+        .bear-ear::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--bear-light);
+            border-radius: 50%;
+            top: 7px;
+            left: 7px;
+        }
+
+        @keyframes earTwitch {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Face */
         .bear-face {
             position: absolute;
-            width: 60px;
-            height: 40px;
+            width: 80px;
+            height: 60px;
             top: 25px;
             left: 10px;
         }
 
+        /* Eyes with blinking */
         .bear-eye {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
             top: 10px;
+            overflow: hidden;
+            animation: blink 5s infinite;
         }
 
         .bear-eye.left { left: 15px; }
         .bear-eye.right { right: 15px; }
 
-        .bear-eye::after {
+        .bear-eye::before {
             content: '';
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 10px;
+            height: 10px;
             background: black;
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            animation: eyeMovement 8s infinite;
         }
 
+        @keyframes blink {
+            0%, 45%, 55%, 100% { height: 20px; }
+            48%, 52% { height: 2px; }
+        }
+
+        @keyframes eyeMovement {
+            0%, 100% { transform: translate(-50%, -50%); }
+            25% { transform: translate(-30%, -50%); }
+            50% { transform: translate(-70%, -50%); }
+            75% { transform: translate(-50%, -30%); }
+        }
+
+        /* Nose */
         .bear-nose {
             position: absolute;
-            width: 15px;
-            height: 10px;
+            width: 20px;
+            height: 15px;
             background: black;
             border-radius: 50%;
             top: 25px;
-            left: 22px;
+            left: 30px;
+            animation: noseWiggle 10s infinite;
         }
 
+        @keyframes noseWiggle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Mouth with smiling animation */
         .bear-mouth {
             position: absolute;
-            width: 20px;
-            height: 10px;
+            width: 40px;
+            height: 20px;
             border: 3px solid transparent;
-            border-bottom: 3px solid #FF69B4;
+            border-bottom: 3px solid var(--pink-dark);
             border-radius: 0 0 50% 50%;
-            top: 30px;
+            top: 35px;
             left: 20px;
+            animation: smile 6s infinite;
         }
 
-        .bear-body {
-            position: absolute;
-            width: 100px;
-            height: 90px;
-            background: #8B4513;
-            border-radius: 40px 40px 20px 20px;
-            top: 50px;
-            left: 10px;
+        @keyframes smile {
+            0%, 100% { width: 40px; border-bottom-color: var(--pink-dark); }
+            50% { width: 50px; border-bottom-color: var(--heart); }
         }
 
+        /* Arms with waving animation */
         .bear-arm {
             position: absolute;
-            width: 25px;
-            height: 60px;
-            background: #8B4513;
-            border-radius: 12px;
-            top: 50px;
-            animation: waveArm 2s ease-in-out infinite;
+            width: 40px;
+            height: 80px;
+            background: var(--bear-brown);
+            border-radius: 20px;
+            bottom: 40px;
+            transform-origin: top center;
+            animation: waveArm 4s ease-in-out infinite;
+            box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.1);
         }
 
         .bear-arm.left {
-            left: 0;
-            transform-origin: top center;
+            left: 20px;
             animation-delay: 0.5s;
         }
 
         .bear-arm.right {
-            right: 0;
-            transform-origin: top center;
+            right: 20px;
         }
 
+        @keyframes waveArm {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        /* Legs with walking animation */
+        .bear-leg {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            background: var(--bear-brown);
+            border-radius: 25px 25px 15px 15px;
+            bottom: 0;
+            animation: walk 3s ease-in-out infinite;
+        }
+
+        .bear-leg.left {
+            left: 45px;
+            animation-delay: 0.5s;
+        }
+
+        .bear-leg.right {
+            right: 45px;
+        }
+
+        @keyframes walk {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Heart float animation */
         .bear-heart {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: var(--heart);
             transform: rotate(45deg);
-            top: 30px;
-            left: 45px;
-            animation: heartbeat 1.5s ease-in-out infinite;
+            top: -50px;
+            left: 80px;
+            animation: floatHeart 3s ease-in-out infinite;
+            opacity: 0;
+            z-index: 4;
         }
 
         .bear-heart::before,
         .bear-heart::after {
             content: '';
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: var(--heart);
             border-radius: 50%;
         }
 
         .bear-heart::before {
-            top: -15px;
+            top: -20px;
             left: 0;
         }
 
         .bear-heart::after {
             top: 0;
-            left: -15px;
+            left: -20px;
         }
 
-        @keyframes floatBear {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
+        .bear-heart.visible {
+            animation: floatHeart 3s ease-in-out infinite;
+            opacity: 1;
         }
 
-        @keyframes waveArm {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(15deg); }
-            75% { transform: rotate(-15deg); }
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: rotate(45deg) scale(1) translateY(0);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: rotate(45deg) scale(1.1) translateY(-20px);
+                opacity: 1;
+            }
         }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: rotate(45deg) scale(1); }
-            50% { transform: rotate(45deg) scale(1.1); }
+        /* Special accessories */
+        .accessory {
+            position: absolute;
+            z-index: 5;
+            animation: accessoryFloat 4s ease-in-out infinite;
         }
 
+        @keyframes accessoryFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .rose {
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to bottom, #FF69B4, #FF1493);
+            border-radius: 0 15px 15px 0;
+            top: 20px;
+            right: 30px;
+            transform: rotate(45deg);
+        }
+
+        .chocolate {
+            width: 40px;
+            height: 20px;
+            background: #8B4513;
+            border-radius: 5px;
+            top: 30px;
+            right: 20px;
+            transform: rotate(15deg);
+        }
+
+        .teddy {
+            width: 40px;
+            height: 40px;
+            background: #DEB887;
+            border-radius: 50%;
+            top: 10px;
+            right: 10px;
+            box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .hug-bubble {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            top: 60px;
+            left: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: bubblePulse 2s ease-in-out infinite;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .hug-bubble.show {
+            animation: bubbleAppear 0.5s ease-out forwards,
+                       bubblePulse 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes bubbleAppear {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bubblePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Thought bubble */
+        .thought-bubble {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: white;
+            border-radius: 20px;
+            top: -50px;
+            left: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            transform: scale(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 6;
+        }
+
+        .thought-bubble.show {
+            animation: thoughtAppear 2s ease-out forwards;
+        }
+
+        @keyframes thoughtAppear {
+            0% { opacity: 0; transform: scale(0); }
+            30% { opacity: 1; transform: scale(1); }
+            70% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Buttons */
         .buttons {
             display: flex;
             justify-content: center;
@@ -288,11 +497,17 @@
             cursor: pointer;
             font-size: 1rem;
             box-shadow: 0 6px 0 rgba(156, 72, 82, 0.25);
-            transition: transform 0.15s ease;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 rgba(156, 72, 82, 0.25);
         }
 
         .btn:active {
             transform: translateY(2px);
+            box-shadow: 0 3px 0 rgba(156, 72, 82, 0.25);
         }
 
         .btn.secondary {
@@ -316,11 +531,16 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .nav-heart:hover {
             transform: rotate(-10deg) scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-heart:active {
+            transform: rotate(-10deg) scale(0.95);
         }
 
         .nav-heart span {
@@ -334,7 +554,7 @@
             margin-top: 8px;
         }
 
-        /* Music Control */
+        /* Controls */
         .music-control {
             position: fixed;
             top: 20px;
@@ -350,24 +570,18 @@
             z-index: 100;
             border: 2px solid white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .music-control:hover {
             transform: scale(1.1);
         }
 
-        .music-control i {
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        /* Flower Button */
         .flower-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--green);
+            background: var(--bear-brown);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -378,82 +592,16 @@
             z-index: 100;
             border: 2px solid white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .flower-btn:hover {
             transform: scale(1.1);
         }
 
-        .flower-btn i {
+        .music-control i, .flower-btn i {
             color: white;
             font-size: 1.2rem;
-        }
-
-        /* Floating Elements */
-        .floating-heart {
-            position: fixed;
-            font-size: 20px;
-            pointer-events: none;
-            z-index: -1;
-            animation: float 5s linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            pointer-events: none;
-            z-index: 1000;
-            animation: confetti-fall 3s linear forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.3);
-            z-index: 101;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--rose), var(--yellow), var(--purple), var(--blue));
-            width: 0%;
-            transition: width 0.3s ease;
-            border-radius: 0 10px 10px 0;
         }
 
         /* Day Counter */
@@ -471,115 +619,69 @@
             z-index: 100;
         }
 
-        /* Special Bear Accessories */
-        .bear-rose {
-            position: absolute;
-            width: 30px;
-            height: 40px;
-            background: var(--rose);
-            border-radius: 0 15px 15px 0;
-            top: 20px;
-            right: 10px;
-            transform: rotate(45deg);
-            animation: sway 2s ease-in-out infinite;
-        }
-
-        .bear-chocolate {
-            position: absolute;
-            width: 40px;
-            height: 20px;
-            background: #8B4513;
-            border-radius: 5px;
-            top: 30px;
-            right: 5px;
-            transform: rotate(15deg);
-            animation: sway 2s ease-in-out infinite;
-        }
-
-        .bear-teddy {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: #DEB887;
-            border-radius: 50%;
-            top: 20px;
-            right: 5px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        .bear-hug {
-            position: absolute;
-            width: 80px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            top: 40px;
-            left: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(45deg); }
-            50% { transform: rotate(55deg); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
-
-        @media (max-width: 540px) {
-            .buttons {
-                flex-direction: column;
-                align-items: center;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .art {
+                height: 250px;
             }
-
-            .nav-heart {
-                position: static;
-                margin: 18px auto 0;
+            
+            .bear-container {
+                width: 160px;
+                height: 250px;
             }
-
-            .music-control, .flower-btn {
-                width: 40px;
-                height: 40px;
+            
+            .bear-head {
+                width: 80px;
+                height: 80px;
+                bottom: 100px;
+                left: 40px;
             }
-
-            .day-counter {
-                bottom: 10px;
-                left: 10px;
-                font-size: 0.8rem;
-                padding: 6px 12px;
+            
+            .bear-body {
+                width: 100px;
+                height: 120px;
+                left: 30px;
             }
+            
+            .bear-arm {
+                width: 30px;
+                height: 60px;
+            }
+        }
 
+        @media (max-width: 480px) {
             .art {
                 height: 200px;
             }
-
-            .bear-character {
-                width: 100px;
-                height: 120px;
+            
+            .bear-container {
+                width: 120px;
+                height: 200px;
+            }
+            
+            .bear-head {
+                width: 60px;
+                height: 60px;
+                bottom: 80px;
+                left: 30px;
+            }
+            
+            .bear-body {
+                width: 80px;
+                height: 100px;
+                left: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
     <!-- Music Control -->
     <div class="music-control" id="musicControl">
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
 
-    <!-- Flower Button -->
-    <div class="flower-btn" id="flowerBtn">
+    <!-- Heart Button -->
+    <div class="flower-btn" id="heartBtn">
         <i class="fas fa-heart"></i>
     </div>
 
@@ -592,7 +694,8 @@
         <section class="page is-active" data-page="start">
             <div class="title">Ready for 7 days of love?</div>
             <div class="art">
-                <div class="bear-character" id="bearStart">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -602,11 +705,13 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
+                        <div class="thought-bubble" id="startThought">💭</div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-heart"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="bear-heart visible"></div>
                 </div>
             </div>
             <div class="buttons">
@@ -618,7 +723,8 @@
         <section class="page" data-page="no">
             <div class="title">Why did u click no!?</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -628,10 +734,12 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
+                        <div class="thought-bubble" id="noThought">😢</div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
                 </div>
             </div>
             <div class="buttons">
@@ -642,7 +750,8 @@
         <section class="page" data-page="rose">
             <div class="title">Phool for my fool</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -652,11 +761,12 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
-                        <div class="bear-rose"></div>
+                        <div class="accessory rose"></div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY ROSE DAY</div>
@@ -666,7 +776,8 @@
         <section class="page" data-page="propose">
             <div class="title">Will you be mine?</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -677,10 +788,11 @@
                             <div class="bear-mouth"></div>
                         </div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-heart"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="bear-heart visible"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY PROPOSE DAY</div>
@@ -690,7 +802,8 @@
         <section class="page" data-page="chocolate">
             <div class="title">I ate ur chocolate btw</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -700,11 +813,12 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
-                        <div class="bear-chocolate"></div>
+                        <div class="accessory chocolate"></div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY CHOCOLATE DAY</div>
@@ -714,7 +828,8 @@
         <section class="page" data-page="teddy">
             <div class="title">My personal cuddle teddybear</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -724,11 +839,12 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
-                        <div class="bear-teddy"></div>
+                        <div class="accessory teddy"></div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY TEDDY DAY</div>
@@ -738,7 +854,8 @@
         <section class="page" data-page="promise">
             <div class="title">I promise to stay by ur side</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -749,10 +866,11 @@
                             <div class="bear-mouth"></div>
                         </div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-heart"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="bear-heart visible"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY PROMISE DAY</div>
@@ -762,7 +880,8 @@
         <section class="page" data-page="hug">
             <div class="title">Virtual hug for ya!</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -773,10 +892,11 @@
                             <div class="bear-mouth"></div>
                         </div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-hug"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="hug-bubble" id="hugBubble">🤗</div>
                 </div>
             </div>
             <div class="subtitle">HAPPY HUG DAY</div>
@@ -786,7 +906,8 @@
         <section class="page" data-page="kiss">
             <div class="title">You wear my kisses better than me</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -797,10 +918,11 @@
                             <div class="bear-mouth"></div>
                         </div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-heart"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="bear-heart visible"></div>
                 </div>
             </div>
             <div class="subtitle">HAPPY KISS DAY</div>
@@ -810,7 +932,8 @@
         <section class="page" data-page="valentine">
             <div class="title">HAPPY VALENTINE'S DAY</div>
             <div class="art">
-                <div class="bear-character">
+                <div class="bear-container">
+                    <div class="bear-body"></div>
                     <div class="bear-head">
                         <div class="bear-ear left"></div>
                         <div class="bear-ear right"></div>
@@ -820,12 +943,13 @@
                             <div class="bear-nose"></div>
                             <div class="bear-mouth"></div>
                         </div>
+                        <div class="accessory rose"></div>
                     </div>
-                    <div class="bear-body"></div>
                     <div class="bear-arm left"></div>
                     <div class="bear-arm right"></div>
-                    <div class="bear-heart"></div>
-                    <div class="bear-rose"></div>
+                    <div class="bear-leg left"></div>
+                    <div class="bear-leg right"></div>
+                    <div class="bear-heart visible"></div>
                 </div>
             </div>
             <div class="subtitle">Will you be my permanent?</div>
@@ -838,36 +962,55 @@
     </audio>
 
     <script>
+        // Page Management
         const showPage = (name) => {
             document.querySelectorAll(".page").forEach(page => page.classList.remove("is-active"));
             const target = document.querySelector(`[data-page="${name}"]`);
             if (target) {
                 target.classList.add("is-active");
-                updateProgressBar();
+                updateBearForPage(name);
                 updateDayCounter(name);
-                updateBearAnimation(name);
+                triggerPageAnimations(name);
             }
         };
 
-        const updateBearAnimation = (page) => {
-            // Reset all animations
-            const bears = document.querySelectorAll('.bear-character');
-            bears.forEach(bear => {
-                bear.style.animation = 'floatBear 3s ease-in-out infinite';
-            });
-
-            // Special animations for specific pages
+        // Update bear animations based on page
+        const updateBearForPage = (page) => {
+            // Reset all special animations
+            document.querySelectorAll('.hug-bubble').forEach(bubble => bubble.classList.remove('show'));
+            document.querySelectorAll('.thought-bubble').forEach(bubble => bubble.classList.remove('show'));
+            
+            // Page-specific animations
             switch(page) {
+                case 'no':
+                    setTimeout(() => {
+                        const thought = document.getElementById('noThought');
+                        if (thought) thought.classList.add('show');
+                    }, 500);
+                    break;
                 case 'hug':
-                    // Special hug animation
-                    const hugBear = document.querySelector('[data-page="hug"] .bear-character');
-                    if (hugBear) hugBear.style.animation = 'floatBear 2s ease-in-out infinite';
+                    setTimeout(() => {
+                        const bubble = document.getElementById('hugBubble');
+                        if (bubble) bubble.classList.add('show');
+                    }, 800);
                     break;
-                case 'valentine':
-                    // Celebration animation
-                    const valBear = document.querySelector('[data-page="valentine"] .bear-character');
-                    if (valBear) valBear.style.animation = 'floatBear 1.5s ease-in-out infinite';
+                case 'start':
+                    setTimeout(() => {
+                        const thought = document.getElementById('startThought');
+                        if (thought) thought.classList.add('show');
+                    }, 1000);
                     break;
+            }
+        };
+
+        // Trigger special animations when page loads
+        const triggerPageAnimations = (page) => {
+            const bearContainer = document.querySelector('.bear-container');
+            if (bearContainer) {
+                // Add bounce effect
+                bearContainer.style.animation = 'none';
+                void bearContainer.offsetWidth;
+                bearContainer.style.animation = 'fadeIn 0.5s ease';
             }
         };
 
@@ -885,18 +1028,6 @@
             }
         };
 
-        const updateProgressBar = () => {
-            const pages = document.querySelectorAll('.page:not([data-page="start"]):not([data-page="no"])');
-            const activePage = document.querySelector('.page.is-active');
-            const activePages = Array.from(pages).filter(page => {
-                return page.classList.contains('is-active') || 
-                       page.dataset.page === activePage?.dataset.page;
-            });
-            
-            const progress = (activePages.length / pages.length) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-        };
-
         // Music Control
         const backgroundMusic = document.getElementById('backgroundMusic');
         const musicControl = document.getElementById('musicControl');
@@ -907,9 +1038,11 @@
             if (musicPlaying) {
                 backgroundMusic.pause();
                 musicIcon.className = 'fas fa-volume-mute';
+                musicControl.style.background = '#d8606b';
             } else {
                 backgroundMusic.play().catch(e => console.log("Autoplay prevented"));
                 musicIcon.className = 'fas fa-music';
+                musicControl.style.background = 'var(--pink-accent)';
             }
             musicPlaying = !musicPlaying;
         });
@@ -917,27 +1050,86 @@
         // Initialize music
         backgroundMusic.volume = 0.3;
 
-        // Flower Button (Create Hearts)
-        const flowerBtn = document.getElementById('flowerBtn');
-        flowerBtn.addEventListener('click', () => {
-            createHearts(15);
+        // Heart Button - Make bear interactive
+        const heartBtn = document.getElementById('heartBtn');
+        heartBtn.addEventListener('click', () => {
+            makeBearDance();
+            createHearts(10);
         });
 
+        function makeBearDance() {
+            const bearHead = document.querySelector('.bear-head');
+            const bearArms = document.querySelectorAll('.bear-arm');
+            const bearLegs = document.querySelectorAll('.bear-leg');
+            
+            if (bearHead) {
+                // Head shake
+                bearHead.style.animation = 'none';
+                void bearHead.offsetWidth;
+                bearHead.style.animation = 'headBob 0.5s ease-in-out';
+                
+                // Arms wave
+                bearArms.forEach(arm => {
+                    arm.style.animation = 'none';
+                    void arm.offsetWidth;
+                    arm.style.animation = 'waveArm 0.5s ease-in-out';
+                });
+                
+                // Legs bounce
+                bearLegs.forEach(leg => {
+                    leg.style.animation = 'none';
+                    void leg.offsetWidth;
+                    leg.style.animation = 'walk 0.5s ease-in-out';
+                });
+                
+                // Return to normal animations
+                setTimeout(() => {
+                    bearHead.style.animation = 'headBob 4s ease-in-out infinite';
+                    bearArms.forEach(arm => {
+                        arm.style.animation = 'waveArm 4s ease-in-out infinite';
+                    });
+                    bearLegs.forEach(leg => {
+                        leg.style.animation = 'walk 3s ease-in-out infinite';
+                    });
+                }, 500);
+            }
+        }
+
+        // Create floating hearts
         function createHearts(count) {
             for (let i = 0; i < count; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
                     heart.innerHTML = '❤️';
-                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.position = 'fixed';
                     heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.top = '100vh';
+                    heart.style.zIndex = '1000';
+                    heart.style.opacity = '0.8';
+                    heart.style.animation = `floatHeart ${Math.random() * 2 + 2}s ease-in-out forwards`;
                     heart.style.color = `hsl(${Math.random() * 360}, 100%, 65%)`;
-                    heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
                     
                     document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 5000);
+                    setTimeout(() => heart.remove(), 3000);
                 }, i * 100);
             }
+            
+            // Add custom animation for hearts
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatHeart {
+                    0% { 
+                        transform: translateY(0) rotate(0deg) scale(1); 
+                        opacity: 0.8;
+                    }
+                    100% { 
+                        transform: translateY(-100vh) rotate(360deg) scale(0.5); 
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         }
 
         // Create initial floating hearts
@@ -945,40 +1137,40 @@
             createHearts(1);
         }, 3000);
 
-        // Confetti effect on special pages
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = `${Math.random() * 100}vw`;
-                    confetti.style.backgroundColor = [
-                        '#FF69B4', '#FFD700', '#DA70D6', '#87CEEB', '#98FB98'
-                    ][Math.floor(Math.random() * 5)];
-                    confetti.style.width = `${Math.random() * 10 + 5}px`;
-                    confetti.style.height = confetti.style.width;
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 3000);
-                }, i * 50);
-            }
-        }
-
         // Page navigation
         document.addEventListener("click", (event) => {
             const targetButton = event.target.closest("[data-target]");
             if (targetButton) {
                 showPage(targetButton.dataset.target);
+                makeBearDance();
                 return;
             }
 
             const nextButton = event.target.closest("[data-next]");
             if (nextButton) {
-                if (nextButton.dataset.next === 'valentine') {
-                    createConfetti();
-                }
                 showPage(nextButton.dataset.next);
+                makeBearDance();
+            }
+        });
+
+        // Bear click interaction
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.bear-container') || 
+                e.target.closest('.bear-head') || 
+                e.target.closest('.bear-body')) {
+                makeBearDance();
+                createHearts(5);
+                
+                // Show thought bubble
+                const currentPage = document.querySelector('.page.is-active').dataset.page;
+                if (currentPage === 'start') {
+                    const thought = document.getElementById('startThought');
+                    if (thought) {
+                        thought.classList.remove('show');
+                        void thought.offsetWidth;
+                        thought.classList.add('show');
+                    }
+                }
             }
         });
 
@@ -990,30 +1182,25 @@
             
             if (e.key === 'ArrowRight' && currentIndex < pageOrder.length - 1) {
                 showPage(pageOrder[currentIndex + 1]);
+                makeBearDance();
             } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
                 showPage(pageOrder[currentIndex - 1]);
-            }
-        });
-
-        // Make bear interactive
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.bear-character')) {
-                const bear = e.target.closest('.bear-character');
-                bear.style.animation = 'none';
-                void bear.offsetWidth; // Trigger reflow
-                bear.style.animation = 'floatBear 0.5s ease-in-out';
-                setTimeout(() => {
-                    bear.style.animation = 'floatBear 3s ease-in-out infinite';
-                }, 500);
-                
-                createHearts(3);
+                makeBearDance();
+            } else if (e.key === ' ') {
+                makeBearDance();
+                createHearts(5);
             }
         });
 
         // Initialize
+        showPage('start');
         createHearts(10);
-        updateProgressBar();
-        updateBearAnimation('start');
+        
+        // Auto-show start thought bubble
+        setTimeout(() => {
+            const thought = document.getElementById('startThought');
+            if (thought) thought.classList.add('show');
+        }, 1000);
     </script>
 </body>
 </html>
