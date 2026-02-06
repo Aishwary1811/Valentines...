@@ -2216,3 +2216,674 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player with Sound Effects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #4cc9f0;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        
+        .player-section, .effects-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #4cc9f0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .player-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .album-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        .song-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .song-artist {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #4361ee, #3a0ca3);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        .play-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: linear-gradient(to right, #4cc9f0, #4361ee);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .volume-slider {
+            flex-grow: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4cc9f0;
+            cursor: pointer;
+        }
+        
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .effect-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .effect-btn:hover {
+            background: rgba(76, 201, 240, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .effect-icon {
+            font-size: 24px;
+            color: #4cc9f0;
+            margin-bottom: 8px;
+        }
+        
+        .progress-container {
+            margin-top: 20px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #4cc9f0, #4361ee);
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .status {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #4cc9f0;
+        }
+        
+        @media (max-width: 768px) {
+            .effects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .play-btn {
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-music"></i> Simple Music Player</h1>
+        <p class="subtitle">Play background music and add sound effects</p>
+        
+        <div class="player-section">
+            <h2 class="section-title"><i class="fas fa-play-circle"></i> Background Music</h2>
+            <div class="player-controls">
+                <div class="music-info">
+                    <div class="album-cover">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div>
+                        <div class="song-title">Ambient Chill</div>
+                        <div class="song-artist">Relaxation Mix</div>
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button id="prevBtn">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="play-btn" id="playBtn">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                    <button id="nextBtn">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+                    <span id="volumeValue">50%</span>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="effects-section">
+            <h2 class="section-title"><i class="fas fa-sliders-h"></i> Sound Effects</h2>
+            <div class="effects-grid">
+                <div class="effect-btn" id="effect1">
+                    <i class="fas fa-bell effect-icon"></i>
+                    <span>Bell</span>
+                </div>
+                <div class="effect-btn" id="effect2">
+                    <i class="fas fa-drum effect-icon"></i>
+                    <span>Drum</span>
+                </div>
+                <div class="effect-btn" id="effect3">
+                    <i class="fas fa-bolt effect-icon"></i>
+                    <span>Laser</span>
+                </div>
+                <div class="effect-btn" id="effect4">
+                    <i class="fas fa-wind effect-icon"></i>
+                    <span>Wind</span>
+                </div>
+                <div class="effect-btn" id="effect5">
+                    <i class="fas fa-tint effect-icon"></i>
+                    <span>Rain</span>
+                </div>
+                <div class="effect-btn" id="effect6">
+                    <i class="fas fa-car effect-icon"></i>
+                    <span>Engine</span>
+                </div>
+                <div class="effect-btn" id="effect7">
+                    <i class="fas fa-crow effect-icon"></i>
+                    <span>Bird</span>
+                </div>
+                <div class="effect-btn" id="effect8">
+                    <i class="fas fa-magic effect-icon"></i>
+                    <span>Magic</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status" id="status">
+            Ready to play music
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const playBtn = document.getElementById('playBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeValue = document.getElementById('volumeValue');
+        const progress = document.getElementById('progress');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const statusEl = document.getElementById('status');
+        
+        // State
+        let musicPlaying = false;
+        let currentTime = 0;
+        let duration = 180; // 3 minutes in seconds
+        let progressInterval;
+        
+        // Create audio context for sound effects
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Initialize
+        function init() {
+            updateStatus("Click Play to start music");
+            updateTimeDisplay();
+            
+            // Set up volume
+            volumeSlider.addEventListener('input', function() {
+                const volume = this.value / 100;
+                volumeValue.textContent = `${this.value}%`;
+                updateStatus(`Volume set to ${this.value}%`);
+            });
+            
+            // Set up play button
+            playBtn.addEventListener('click', toggleMusic);
+            
+            // Set up sound effect buttons
+            setupSoundEffects();
+            
+            // Set up progress bar click
+            document.querySelector('.progress-bar').addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                currentTime = percent * duration;
+                updateProgress();
+                updateStatus(`Jumped to ${formatTime(currentTime)}`);
+            });
+            
+            // Simulate music progress
+            startProgressSimulation();
+        }
+        
+        // Toggle music playback
+        function toggleMusic() {
+            if (musicPlaying) {
+                // Pause music
+                musicPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+                updateStatus("Music paused");
+                stopProgress();
+            } else {
+                // Play music
+                musicPlaying = true;
+                playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                updateStatus("Playing: Ambient Chill");
+                startProgress();
+            }
+        }
+        
+        // Start progress simulation
+        function startProgress() {
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                if (currentTime < duration) {
+                    currentTime += 0.5;
+                    updateProgress();
+                } else {
+                    currentTime = 0;
+                    updateProgress();
+                }
+            }, 500);
+        }
+        
+        // Stop progress simulation
+        function stopProgress() {
+            clearInterval(progressInterval);
+        }
+        
+        // Start progress simulation for demo (even when not playing)
+        function startProgressSimulation() {
+            setInterval(() => {
+                if (!musicPlaying && currentTime < duration) {
+                    currentTime += 0.1;
+                    if (currentTime > duration) currentTime = 0;
+                    updateProgress();
+                }
+            }, 100);
+        }
+        
+        // Update progress bar and time
+        function updateProgress() {
+            const percent = (currentTime / duration) * 100;
+            progress.style.width = `${percent}%`;
+            updateTimeDisplay();
+        }
+        
+        // Update time display
+        function updateTimeDisplay() {
+            currentTimeEl.textContent = formatTime(currentTime);
+            durationEl.textContent = formatTime(duration);
+        }
+        
+        // Format time as mm:ss
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+        
+        // Update status message
+        function updateStatus(message) {
+            statusEl.textContent = message;
+        }
+        
+        // Set up sound effects using Web Audio API
+        function setupSoundEffects() {
+            // Bell sound
+            document.getElementById('effect1').addEventListener('click', () => {
+                playBellSound();
+                updateStatus("Bell sound played");
+            });
+            
+            // Drum sound
+            document.getElementById('effect2').addEventListener('click', () => {
+                playDrumSound();
+                updateStatus("Drum sound played");
+            });
+            
+            // Laser sound
+            document.getElementById('effect3').addEventListener('click', () => {
+                playLaserSound();
+                updateStatus("Laser sound played");
+            });
+            
+            // Wind sound
+            document.getElementById('effect4').addEventListener('click', () => {
+                playWindSound();
+                updateStatus("Wind sound played");
+            });
+            
+            // Rain sound
+            document.getElementById('effect5').addEventListener('click', () => {
+                playRainSound();
+                updateStatus("Rain sound played");
+            });
+            
+            // Engine sound
+            document.getElementById('effect6').addEventListener('click', () => {
+                playEngineSound();
+                updateStatus("Engine sound played");
+            });
+            
+            // Bird sound
+            document.getElementById('effect7').addEventListener('click', () => {
+                playBirdSound();
+                updateStatus("Bird sound played");
+            });
+            
+            // Magic sound
+            document.getElementById('effect8').addEventListener('click', () => {
+                playMagicSound();
+                updateStatus("Magic sound played");
+            });
+        }
+        
+        // Sound effect functions using Web Audio API
+        function playBellSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1);
+        }
+        
+        function playDrumSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.2);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+        
+        function playLaserSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(20, audioContext.currentTime + 0.5);
+            oscillator.type = 'sawtooth';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+        
+        function playWindSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Wind-like noise
+            oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 2);
+            oscillator.type = 'triangle';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 2);
+        }
+        
+        function playRainSound() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.value = 600 + Math.random() * 400;
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.1);
+                }, i * 100);
+            }
+        }
+        
+        function playEngineSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(80, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.5);
+            oscillator.frequency.exponentialRampToValueAtTime(80, audioContext.currentTime + 1);
+            oscillator.type = 'sawtooth';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1.5);
+        }
+        
+        function playBirdSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Bird chirp pattern
+            oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(2000, audioContext.currentTime + 0.05);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.15);
+        }
+        
+        function playMagicSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+            oscillator.type = 'triangle';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+        
+        // Previous and Next buttons (simulated)
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            currentTime = Math.max(0, currentTime - 10);
+            updateProgress();
+            updateStatus("Skipped back 10 seconds");
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            currentTime = Math.min(duration, currentTime + 10);
+            updateProgress();
+            updateStatus("Skipped forward 10 seconds");
+        });
+        
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
