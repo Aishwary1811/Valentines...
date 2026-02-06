@@ -1,9 +1,4 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b22079b2e 100644
---- a/index.html
-+++ b/index.html
-@@ -1,2889 +1,338 @@
+
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -1025,8 +1020,7 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -    <div class="music-control" id="musicToggle">
 -        <i class="fas fa-music" id="musicIcon"></i>
 -    </div>
-+    <div class="container" id="pageContainer"></div>
- 
+-
 -    <!-- Progress Bar -->
 -    <div class="progress-container">
 -        <div class="progress-bar-indicator" id="progressBar"></div>
@@ -1048,115 +1042,18 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                    <h3 style="color: var(--garden-green); margin-bottom: 10px; font-family: var(--heading-font);">💌 Special Message:</h3>
 -                    <p id="modalMessage" style="font-style: italic; font-size: 1.1rem;"></p>
 -                </div>
-+    <template id="pageTemplate">
-+        <section class="page" data-page="">
-+            <div class="title"></div>
-+            <div class="art">
-+                <img alt="">
-             </div>
+-            </div>
 -        </div>
 -    </div>
-+            <div class="subtitle"></div>
-+            <p class="note"></p>
-+            <div class="buttons"></div>
-+            <button class="nav-heart" data-next><span>CLICK ME</span></button>
-+        </section>
-+    </template>
- 
+-
 -    <!-- Gardener's Note -->
 -    <div class="gardener-note">
 -        <h3 style="font-family: var(--heading-font);"><i class="fas fa-seedling"></i> Gardener's Note</h3>
 -        <p>Dear Lakshtuu, each flower in this garden holds a special meaning just for you. Complete the garden to unlock Valentine's Week! 🌸</p>
 -        <p style="text-align: right; margin-top: 10px; font-style: italic; font-family: var(--special-font);">- Aishwary 💙</p>
 -    </div>
-+    <script>
-+        const pages = [
-+            {
-+                id: "start",
-+                title: "Ready for 7 days of l",
-+                image: "https://i.imgur.com/2QF1W1K.png",
-+                alt: "Cute bears hugging",
-+                buttons: [
-+                    { label: "YES", action: "go", target: "rose" },
-+                    { label: "NO", action: "go", target: "no", variant: "secondary" }
-+                ]
-+            },
-+            {
-+                id: "no",
-+                title: "Why did u click no!?",
-+                image: "https://i.imgur.com/4gZ3I1r.png",
-+                alt: "Cute bear asking why",
-+                buttons: [
-+                    { label: "TRY AGAIN", action: "go", target: "start" }
-+                ]
-+            },
-+            {
-+                id: "rose",
-+                title: "phool for my fool",
-+                image: "https://i.imgur.com/VIqRQeN.png",
-+                alt: "Bear with rose",
-+                subtitle: "HAPPY ROSE DAY",
-+                next: "propose"
-+            },
-+            {
-+                id: "propose",
-+                title: "Will you be mine?",
-+                image: "https://i.imgur.com/1x8b8mV.png",
-+                alt: "Bear proposing",
-+                subtitle: "HAPPY PROPOSE DAY",
-+                next: "chocolate"
-+            },
-+            {
-+                id: "chocolate",
-+                title: "I ate ur chocolate btw",
-+                image: "https://i.imgur.com/7sS2Nh0.png",
-+                alt: "Bears with chocolate",
-+                subtitle: "HAPPY CHOCOLATE DAY",
-+                next: "teddy"
-+            },
-+            {
-+                id: "teddy",
-+                title: "my personal cuddle teddybear",
-+                image: "https://i.imgur.com/8NQvN2T.png",
-+                alt: "Bear with teddy",
-+                subtitle: "HAPPY TEDDY DAY",
-+                next: "promise"
-+            },
-+            {
-+                id: "promise",
-+                title: "I promise to stay by ur side",
-+                image: "https://i.imgur.com/QV57a2B.png",
-+                alt: "Bears hugging",
-+                subtitle: "HAPPY PROMISE DAY",
-+                next: "hug"
-+            },
-+            {
-+                id: "hug",
-+                title: "Virtual hug for ya!",
-+                image: "https://i.imgur.com/9n3Iibf.png",
-+                alt: "Virtual hug bears",
-+                subtitle: "HAPPY HUG DAY",
-+                next: "kiss"
-+            },
-+            {
-+                id: "kiss",
-+                title: "You wear my kisses better than me",
-+                image: "https://i.imgur.com/9U5A1rQ.png",
-+                alt: "Bears kissing",
-+                subtitle: "HAPPY KISS DAY",
-+                next: "valentine"
-+            },
-+            {
-+                id: "valentine",
-+                title: "HAPPY VALENTINE'S DAY",
-+                image: "https://i.imgur.com/RB46jGf.png",
-+                alt: "Bears on valentine's day",
-+                subtitle: "will you be my permanent ?",
-+                note: "Thanks for making the week special."
-+            }
-+        ];
- 
--    <div class="container">
+-
+     <div class="container">
 -        <!-- PAGE 1: MAGICAL GARDEN FRONT PAGE -->
 -        <div class="page active" id="p1">
 -            <div class="garden-header">
@@ -1166,46 +1063,12 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                <p class="garden-subtitle">
 -                    Plant a garden of love to unlock Valentine's journey! 💖
 -                </p>
--            </div>
-+        const container = document.getElementById("pageContainer");
-+        const template = document.getElementById("pageTemplate");
-+
-+        const renderPages = () => {
-+            pages.forEach((page, index) => {
-+                const clone = template.content.cloneNode(true);
-+                const section = clone.querySelector(".page");
-+                section.dataset.page = page.id;
-+
-+                clone.querySelector(".title").textContent = page.title;
-+
-+                const img = clone.querySelector("img");
-+                img.src = page.image;
-+                img.alt = page.alt;
-+
-+                const subtitle = clone.querySelector(".subtitle");
-+                subtitle.textContent = page.subtitle || "";
-+                subtitle.style.display = page.subtitle ? "block" : "none";
-+
-+                const note = clone.querySelector(".note");
-+                note.textContent = page.note || "";
-+                note.style.display = page.note ? "block" : "none";
-+
-+                const buttons = clone.querySelector(".buttons");
-+                if (page.buttons) {
-+                    page.buttons.forEach((button) => {
-+                        const btn = document.createElement("button");
-+                        btn.className = "btn";
-+                        if (button.variant === "secondary") {
-+                            btn.classList.add("secondary");
-+                        }
-+                        btn.textContent = button.label;
-+                        btn.addEventListener("click", () => showPage(button.target));
-+                        buttons.appendChild(btn);
-+                    });
-+                } else {
-+                    buttons.remove();
-+                }
- 
++        <section class="page is-active" data-page="start">
++            <div class="title">Ready for 7 days of l</div>
++            <div class="art">
++                <img src="https://i.imgur.com/2QF1W1K.png" alt="Cute bears hugging">
+             </div>
+-
 -            <!-- Personalized Welcome -->
 -            <div class="personal-welcome">
 -                <div class="welcome-text">
@@ -1221,22 +1084,21 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                    With all my love,<br>
 -                    Aishwary 💙
 -                </div>
--            </div>
-+                const nav = clone.querySelector("[data-next]");
-+                if (page.next) {
-+                    nav.dataset.next = page.next;
-+                } else {
-+                    nav.remove();
-+                }
++            <div class="buttons">
++                <button class="btn" data-target="rose">YES</button>
++                <button class="btn secondary" data-target="no">NO</button>
+             </div>
++        </section>
  
 -            <!-- Interactive Garden Grid -->
 -            <div class="garden-grid" id="gardenGrid">
 -                <!-- Garden plots will be populated by JavaScript -->
--            </div>
-+                if (index === 0) {
-+                    section.classList.add("is-active");
-+                }
- 
++        <section class="page" data-page="no">
++            <div class="title">Why did u click no!?</div>
++            <div class="art">
++                <img src="https://i.imgur.com/4gZ3I1r.png" alt="Cute bear asking why">
+             </div>
+-
 -            <!-- Garden Progress -->
 -            <div class="garden-progress">
 -                <div class="progress-label">
@@ -1713,8 +1575,85 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -    <audio id="plantSound" preload="auto">
 -        <source src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkles-300.mp3" type="audio/mpeg">
 -    </audio>
--
--    <script>
++            <div class="buttons">
++                <button class="btn" data-target="start">TRY AGAIN</button>
++            </div>
++        </section>
++
++        <section class="page" data-page="rose">
++            <div class="title">phool for my fool</div>
++            <div class="art">
++                <img src="https://i.imgur.com/VIqRQeN.png" alt="Bear with rose">
++            </div>
++            <div class="subtitle">HAPPY ROSE DAY</div>
++            <button class="nav-heart" data-next="propose"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="propose">
++            <div class="title">Will you be mine?</div>
++            <div class="art">
++                <img src="https://i.imgur.com/1x8b8mV.png" alt="Bear proposing">
++            </div>
++            <div class="subtitle">HAPPY PROPOSE DAY</div>
++            <button class="nav-heart" data-next="chocolate"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="chocolate">
++            <div class="title">I ate ur chocolate btw</div>
++            <div class="art">
++                <img src="https://i.imgur.com/7sS2Nh0.png" alt="Bears with chocolate">
++            </div>
++            <div class="subtitle">HAPPY CHOCOLATE DAY</div>
++            <button class="nav-heart" data-next="teddy"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="teddy">
++            <div class="title">my personal cuddle teddybear</div>
++            <div class="art">
++                <img src="https://i.imgur.com/8NQvN2T.png" alt="Bear with teddy">
++            </div>
++            <div class="subtitle">HAPPY TEDDY DAY</div>
++            <button class="nav-heart" data-next="promise"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="promise">
++            <div class="title">I promise to stay by ur side</div>
++            <div class="art">
++                <img src="https://i.imgur.com/QV57a2B.png" alt="Bears hugging">
++            </div>
++            <div class="subtitle">HAPPY PROMISE DAY</div>
++            <button class="nav-heart" data-next="hug"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="hug">
++            <div class="title">Virtual hug for ya!</div>
++            <div class="art">
++                <img src="https://i.imgur.com/9n3Iibf.png" alt="Virtual hug bears">
++            </div>
++            <div class="subtitle">HAPPY HUG DAY</div>
++            <button class="nav-heart" data-next="kiss"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="kiss">
++            <div class="title">You wear my kisses better than me</div>
++            <div class="art">
++                <img src="https://i.imgur.com/9U5A1rQ.png" alt="Bears kissing">
++            </div>
++            <div class="subtitle">HAPPY KISS DAY</div>
++            <button class="nav-heart" data-next="valentine"><span>CLICK ME</span></button>
++        </section>
++
++        <section class="page" data-page="valentine">
++            <div class="title">HAPPY VALENTINE'S DAY</div>
++            <div class="art">
++                <img src="https://i.imgur.com/RB46jGf.png" alt="Bears on valentine's day">
++            </div>
++            <div class="subtitle">will you be my permanent ?</div>
++            <p class="note">Thanks for making the week special.</p>
++        </section>
++    </div>
+ 
+     <script>
 -        // ============ GLOBAL VARIABLES ============
 -        let currentPage = 1;
 -        const totalPages = 10;
@@ -1997,14 +1936,12 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -            plantedFlowers.forEach(flowerId => {
 -                const flower = flowers.find(f => f.id === flowerId);
 -                message += `${flower.emoji} ${flower.name}\n${flower.description}\n\n`;
-+                container.appendChild(clone);
-             });
+-            });
 -            message += "Each flower represents a special thought about you. 💖";
 -            
 -            alert(message);
 -        }
-+        };
- 
+-
 -        function resetGarden() {
 -            if (confirm("Are you sure you want to reset your beautiful garden? All planted flowers will be removed.")) {
 -                flowersPlanted = 0;
@@ -2012,15 +1949,9 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                initGarden();
 -                document.getElementById('continueBtn').style.display = 'none';
 -                showFloatingMessage("Your garden has been reset! Ready to plant new flowers? 🌱", "#98FB98");
-+        const showPage = (name) => {
-+            document.querySelectorAll(".page").forEach(page => page.classList.remove("is-active"));
-+            const target = document.querySelector(`[data-page="${name}"]`);
-+            if (target) {
-+                target.classList.add("is-active");
-             }
+-            }
 -        }
-+        };
- 
+-
 -        // ============ VALENTINE'S WEEK FUNCTIONS ============
 -        function createWeekCalendar() {
 -            const calendar = document.getElementById('weekCalendar');
@@ -2039,8 +1970,7 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                calendar.appendChild(dayBox);
 -            });
 -        }
-+        renderPages();
- 
+-
 -        function jumpToDay(pageNumber) {
 -            nextPage(pageNumber);
 -        }
@@ -2069,9 +1999,18 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -            // Check if garden is complete for Valentine's Week access
 -            if (pageNumber >= 2 && flowersPlanted < totalFlowers && pageNumber !== 10) {
 -                showFloatingMessage(`Please complete your flower garden first! 🌸\n\nYou have planted ${flowersPlanted} of ${totalFlowers} flowers.`, "#FF69B4");
-+        container.addEventListener("click", (event) => {
-+            const nextButton = event.target.closest("[data-next]");
-+            if (!nextButton) {
++        const showPage = (name) => {
++            document.querySelectorAll(".page").forEach(page => page.classList.remove("is-active"));
++            const target = document.querySelector(`[data-page="${name}"]`);
++            if (target) {
++                target.classList.add("is-active");
++            }
++        };
++
++        document.addEventListener("click", (event) => {
++            const targetButton = event.target.closest("[data-target]");
++            if (targetButton) {
++                showPage(targetButton.dataset.target);
                  return;
              }
 -            
@@ -2308,7 +2247,7 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -                }
 -            }
 -        }
--
+ 
 -        function showPromise(element) {
 -            const promiseText = element.querySelector('.memory-title').textContent;
 -            const promiseMessages = {
@@ -2338,7 +2277,10 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -            createHeartExplosion();
 -            for (let i = 0; i < 100; i++) {
 -                setTimeout(() => createHeart(), i * 30);
--            }
++            const nextButton = event.target.closest("[data-next]");
++            if (nextButton) {
++                showPage(nextButton.dataset.next);
+             }
 -            
 -            setTimeout(() => {
 -                const surpriseMessages = [
@@ -3123,7 +3065,6 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
 -            currentTime = Math.min(duration, currentTime + 10);
 -            updateProgress();
 -            updateStatus("Skipped forward 10 seconds");
-+            showPage(nextButton.dataset.next);
          });
 -        
 -        // Initialize when page loads
@@ -3131,6 +3072,3 @@ index 5d592e01c8eec1ae7f008c22f3016f7c050049c3..0e1f16bba18ccb934a1c98095ee1966b
      </script>
  </body>
  </html>
- 
-EOF
-)
