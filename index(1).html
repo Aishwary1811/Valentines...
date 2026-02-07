@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Lakshita 💖 - 7 Days of Love</title>
+    <meta name="description" content="A special Valentine's Week journey for Lakshita from Aishwary.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-bg: #f6d9de;
+            --pink-dark: #c75a65;
+            --pink-accent: #e67783;
+            --heart: #e5737c;
+            --text-dark: #5b2d32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Quicksand", sans-serif;
+            background: linear-gradient(135deg, #ffdde1 0%, #f6d9de 50%, #ffc9d4 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated heart background */
+        body::before {
+            content: "💕 💖 💗 💓 💞 💘 💝 💕 💖 💗 💓 💞 💘 💝";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            font-size: 40px;
+            opacity: 0.08;
+            z-index: 0;
+            word-spacing: 60px;
+            line-height: 100px;
+            animation: scrollHearts 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scrollHearts {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Floating background hearts */
+        body::after {
+            content: "";
+            position: fixed;
+            width: 70vmin;
+            height: 70vmin;
+            border-radius: 50% 50% 40% 40%;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 12vmin rgba(255, 255, 255, 0.15);
+            transform: rotate(-10deg);
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            margin-left: -35vmin;
+            margin-top: -35vmin;
+        }
+
+        .container {
+            width: min(900px, 92vw);
+            position: relative;
+            z-index: 1;
+        }
+
+        .page {
+            display: none;
+            text-align: center;
+            padding: 30px 20px 60px;
+            animation: fadeIn 0.5s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .page.is-active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-family: "Patrick Hand", cursive;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: var(--pink-dark);
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-family: "Patrick Hand", cursive;
+            font-size: clamp(1.4rem, 2.3vw, 2rem);
+            color: var(--pink-dark);
+            margin-top: 12px;
+        }
+
+        .art {
+            width: min(320px, 70vw);
+            margin: 0 auto 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .art img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Interactive Characters */
+        .characters-container {
+            position: relative;
+            width: min(400px, 80vw);
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        .character {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+
+        .character:hover {
+            transform: scale(1.15) !important;
+        }
+
+        .bear {
+            font-size: 100px;
+            line-height: 120px;
+            text-align: center;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        .bear-male {
+            left: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bear-female {
+            right: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .character-name {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: "Patrick Hand", cursive;
+            font-size: 0.9rem;
+            color: var(--pink-dark);
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        /* HUG ANIMATION - Bears move together */
+        .hug-animation .bear-male {
+            animation: hugMale 2s ease-in-out forwards;
+        }
+
+        .hug-animation .bear-female {
+            animation: hugFemale 2s ease-in-out forwards;
+        }
+
+        @keyframes hugMale {
+            0% { 
+                left: 15%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            50% { 
+                left: 40%;
+                transform: translateY(-50%) rotate(-10deg) scale(1.1);
+            }
+            100% { 
+                left: 15%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+
+        @keyframes hugFemale {
+            0% { 
+                right: 15%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            50% { 
+                right: 40%;
+                transform: translateY(-50%) rotate(10deg) scale(1.1);
+            }
+            100% { 
+                right: 15%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+
+        /* KISS ANIMATION - Bears blow kisses */
+        .kiss-animation .bear-male .kiss-heart,
+        .kiss-animation .bear-female .kiss-heart {
+            display: block !important;
+            animation: floatKiss 2s ease-out forwards;
+        }
+
+        .kiss-heart {
+            display: none;
+            position: absolute;
+            font-size: 35px;
+            top: 20%;
+        }
+
+        .bear-male .kiss-heart {
+            left: 110%;
+        }
+
+        .bear-female .kiss-heart {
+            right: 110%;
+        }
+
+        @keyframes floatKiss {
+            0% { 
+                opacity: 0;
+                transform: translateX(0) translateY(0) scale(0.5);
+            }
+            30% { 
+                opacity: 1;
+                transform: translateX(30px) translateY(-15px) scale(1);
+            }
+            70% {
+                opacity: 1;
+                transform: translateX(60px) translateY(-25px) scale(1.2);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateX(90px) translateY(-40px) scale(0.8);
+            }
+        }
+
+        /* WAVE ANIMATION */
+        .wave-animation .bear {
+            animation: wave 0.8s ease-in-out 2;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        /* DANCE ANIMATION */
+        .dance-animation .bear-male,
+        .dance-animation .bear-female {
+            animation: dance 0.6s ease-in-out infinite;
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(-50%) rotate(-8deg); }
+            50% { transform: translateY(-60%) rotate(8deg); }
+        }
+
+        /* Heart reaction */
+        .heart-reaction {
+            position: absolute;
+            font-size: 35px;
+            pointer-events: none;
+            animation: floatHeart 2s ease-out forwards;
+            z-index: 10;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.3) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-120px) scale(1.5) rotate(360deg);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: none;
+            background: var(--pink-accent);
+            color: white;
+            font-weight: 700;
+            padding: 12px 32px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 6px 0 rgba(156, 72, 82, 0.25);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 rgba(156, 72, 82, 0.25);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 0 rgba(156, 72, 82, 0.25);
+        }
+
+        .btn.secondary {
+            background: #d8606b;
+        }
+
+        .nav-heart {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 78px;
+            height: 66px;
+            background: var(--heart);
+            border-radius: 50% 50% 45% 45%;
+            transform: rotate(-10deg);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-heart:hover {
+            transform: rotate(-10deg) scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-heart:active {
+            transform: rotate(-10deg) scale(0.95);
+        }
+
+        .nav-heart span {
+            transform: rotate(10deg);
+            font-size: 0.8rem;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .message-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px auto;
+            max-width: 500px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .message-box p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .instruction {
+            background: linear-gradient(135deg, var(--pink-accent), var(--heart));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 15px auto;
+            max-width: 500px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Hidden Love Notes */
+        .love-note-trigger {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: var(--pink-accent);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+            margin: 10px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .love-note-trigger:hover {
+            transform: scale(1.3) rotate(360deg) !important;
+            animation: none;
+        }
+
+        .love-note-trigger::before {
+            content: "💌";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+
+        .love-note-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+            animation: popIn 0.3s ease;
+        }
+
+        .love-note-popup.active {
+            display: block;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .love-note-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--pink-accent);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 25px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Music toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--pink-accent);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .personalized-greeting {
+            font-family: "Patrick Hand", cursive;
+            font-size: 1.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 540px) {
+            .buttons {
+                flex-direction: column;
+            }
+
+            .nav-heart {
+                position: static;
+                margin: 18px auto 0;
+            }
+
+            .characters-container {
+                height: 250px;
+            }
+
+            .character {
+                width: 90px;
+                height: 90px;
+            }
+
+            .bear {
+                font-size: 70px;
+                line-height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle" title="Toggle music">🎵</button>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Overlay for popups -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Love Note Popup -->
+    <div class="love-note-popup" id="loveNotePopup">
+        <button class="love-note-close" id="closeNote">×</button>
+        <div id="loveNoteContent"></div>
+    </div>
+
+    <div class="container">
+        <!-- Start Page -->
+        <section class="page is-active" data-page="start">
+            <div class="title">Ready for 7 days of love?</div>
+            <p class="personalized-greeting">For my dearest Lakshita 💖</p>
+            <div class="art">
+                <img src="https://i.imgur.com/2QF1W1K.png" alt="Cute bears hugging">
+            </div>
+            <div class="buttons">
+                <button class="btn" data-target="rose">YES</button>
+                <button class="btn secondary" data-target="no">NO</button>
+            </div>
+            <div style="margin-top: 20px;">
+                <span class="love-note-trigger" data-note="start1"></span>
+                <span class="love-note-trigger" data-note="start2"></span>
+                <span class="love-note-trigger" data-note="start3"></span>
+            </div>
+        </section>
+
+        <!-- No Page -->
+        <section class="page" data-page="no">
+            <div class="title">Why did u click no!? 😢</div>
+            <p class="personalized-greeting">Lakshtuu pleaseeee! 🥺</p>
+            <div class="art">
+                <img src="https://i.imgur.com/4gZ3I1r.png" alt="Cute bear asking why">
+            </div>
+            <div class="buttons">
+                <button class="btn" data-target="start">TRY AGAIN</button>
+            </div>
+        </section>
+
+        <!-- Rose Day -->
+        <section class="page" data-page="rose">
+            <div class="title">phool for my fool 🌹</div>
+            <p class="personalized-greeting">Dear Lakshtuu,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/VIqRQeN.png" alt="Bear with rose">
+            </div>
+            <div class="subtitle">HAPPY ROSE DAY</div>
+            
+            <!-- Interactive Characters -->
+            <div class="characters-container" id="roseChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'rose')">
+                    <div class="bear">🧸</div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'rose')">
+                    <div class="bear">🐻</div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>Every rose reminds me of you, Lakshita - beautiful, precious, and special.</p>
+                <p>Just like a rose, you bring beauty and joy to everyone around you! 💖</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="rose1"></span>
+                <span class="love-note-trigger" data-note="rose2"></span>
+            </div>
+            <button class="nav-heart" data-next="propose"><span>NEXT</span></button>
+        </section>
+
+        <!-- Propose Day -->
+        <section class="page" data-page="propose">
+            <div class="title">Will you be mine? 💍</div>
+            <p class="personalized-greeting">My dear Lakshita,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/1x8b8mV.png" alt="Bear proposing">
+            </div>
+            <div class="subtitle">HAPPY PROPOSE DAY</div>
+            
+            <div class="characters-container" id="proposeChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'propose')">
+                    <div class="bear">🧸</div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'propose')">
+                    <div class="bear">🐻</div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>Today I want to tell you how special you are to me, Lakshtuu.</p>
+                <p>You make every day brighter and more beautiful! ✨</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="propose1"></span>
+                <span class="love-note-trigger" data-note="propose2"></span>
+            </div>
+            <button class="nav-heart" data-next="chocolate"><span>NEXT</span></button>
+        </section>
+
+        <!-- Chocolate Day -->
+        <section class="page" data-page="chocolate">
+            <div class="title">I ate ur chocolate btw 😋</div>
+            <p class="personalized-greeting">Sorry Lakshtuu... not sorry! 🍫</p>
+            <div class="art">
+                <img src="https://i.imgur.com/7sS2Nh0.png" alt="Bears with chocolate">
+            </div>
+            <div class="subtitle">HAPPY CHOCOLATE DAY</div>
+            
+            <div class="characters-container" id="chocolateChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'chocolate')">
+                    <div class="bear">🧸</div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'chocolate')">
+                    <div class="bear">🐻</div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>You're sweeter than the sweetest chocolate, Lakshita! 🍬</p>
+                <p>But don't worry, I saved some for you... maybe! 😋</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="choco1"></span>
+                <span class="love-note-trigger" data-note="choco2"></span>
+            </div>
+            <button class="nav-heart" data-next="teddy"><span>NEXT</span></button>
+        </section>
+
+        <!-- Teddy Day -->
+        <section class="page" data-page="teddy">
+            <div class="title">my personal cuddle teddybear 🧸</div>
+            <p class="personalized-greeting">My cuddly Lakshtuu,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/8NQvN2T.png" alt="Bear with teddy">
+            </div>
+            <div class="subtitle">HAPPY TEDDY DAY</div>
+            
+            <div class="characters-container" id="teddyChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'teddy')">
+                    <div class="bear">🧸</div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'teddy')">
+                    <div class="bear">🐻</div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>You're my favorite cuddle buddy, Lakshita! 🤗</p>
+                <p>Always warm, always comforting, always there when I need you!</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="teddy1"></span>
+                <span class="love-note-trigger" data-note="teddy2"></span>
+            </div>
+            <button class="nav-heart" data-next="promise"><span>NEXT</span></button>
+        </section>
+
+        <!-- Promise Day -->
+        <section class="page" data-page="promise">
+            <div class="title">I promise to stay by ur side 🤞</div>
+            <p class="personalized-greeting">Forever yours, Lakshita,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/QV57a2B.png" alt="Bears hugging">
+            </div>
+            <div class="subtitle">HAPPY PROMISE DAY</div>
+            
+            <div class="characters-container" id="promiseChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'promise')">
+                    <div class="bear">🧸</div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'promise')">
+                    <div class="bear">🐻</div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>I promise to always be there for you, Lakshtuu.</p>
+                <p>Through smiles and tears, I'll be by your side! 💕</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="promise1"></span>
+                <span class="love-note-trigger" data-note="promise2"></span>
+            </div>
+            <button class="nav-heart" data-next="hug"><span>NEXT</span></button>
+        </section>
+
+        <!-- Hug Day -->
+        <section class="page" data-page="hug">
+            <div class="title">Virtual hug for ya! 🤗</div>
+            <p class="personalized-greeting">*Big warm hug for Lakshtuu*</p>
+            <div class="art">
+                <img src="https://i.imgur.com/9n3Iibf.png" alt="Virtual hug bears">
+            </div>
+            <div class="subtitle">HAPPY HUG DAY</div>
+            
+            <div class="characters-container" id="hugChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'hug')">
+                    <div class="bear">🧸<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'hug')">
+                    <div class="bear">🐻<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                👆 Click on the bears to see them HUG! 🤗
+            </div>
+
+            <div class="message-box">
+                <p>Sending you the warmest, tightest virtual hug, Lakshita! 🫂</p>
+                <p>Feel the love wrapped around you!</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="hug1"></span>
+                <span class="love-note-trigger" data-note="hug2"></span>
+            </div>
+            <button class="nav-heart" data-next="kiss"><span>NEXT</span></button>
+        </section>
+
+        <!-- Kiss Day -->
+        <section class="page" data-page="kiss">
+            <div class="title">You wear my kisses better than me 💋</div>
+            <p class="personalized-greeting">With all my love, Lakshtuu,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/9U5A1rQ.png" alt="Bears kissing">
+            </div>
+            <div class="subtitle">HAPPY KISS DAY</div>
+            
+            <div class="characters-container" id="kissChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'kiss')">
+                    <div class="bear">🧸<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'kiss')">
+                    <div class="bear">🐻<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                👆 Click on the bears to see them blow KISSES! 😘
+            </div>
+
+            <div class="message-box">
+                <p>Sending you virtual kisses filled with love, Lakshita! 💖</p>
+                <p>You make everything sweeter and more magical!</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="kiss1"></span>
+                <span class="love-note-trigger" data-note="kiss2"></span>
+            </div>
+            <button class="nav-heart" data-next="valentine"><span>NEXT</span></button>
+        </section>
+
+        <!-- Valentine's Day -->
+        <section class="page" data-page="valentine">
+            <div class="title">HAPPY VALENTINE'S DAY 💕</div>
+            <p class="personalized-greeting">My dearest Lakshita,</p>
+            <div class="art">
+                <img src="https://i.imgur.com/RB46jGf.png" alt="Bears on valentine's day">
+            </div>
+            <div class="subtitle">will you be my permanent Valentine? 💕</div>
+            
+            <div class="characters-container dance-animation" id="valentineChars">
+                <div class="character bear-male" onclick="clickCharacter('male', 'valentine')">
+                    <div class="bear">🧸<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Aishwary</div>
+                </div>
+                <div class="character bear-female" onclick="clickCharacter('female', 'valentine')">
+                    <div class="bear">🐻<span class="kiss-heart">💋</span></div>
+                    <div class="character-name">Lakshita</div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                🎉 The bears are dancing for you! 💃🕺
+            </div>
+
+            <div class="message-box">
+                <p>Thank you for making this week - and every day - so special, Lakshtuu! ✨</p>
+                <p>You mean the world to me, and I'm so grateful to have you in my life.</p>
+                <p>Here's to many more adventures together! 🌟</p>
+                <p style="margin-top: 15px; font-style: italic;">With all my heart,<br>- Aishwary 💙</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="love-note-trigger" data-note="val1"></span>
+                <span class="love-note-trigger" data-note="val2"></span>
+                <span class="love-note-trigger" data-note="val3"></span>
+            </div>
+            <p class="note">With all my love, always! 💖</p>
+            <div class="buttons" style="margin-top: 20px;">
+                <button class="btn" data-target="start">START OVER</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Audio Context for sound effects
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        let musicPlaying = false;
+
+        // Love notes database
+        const loveNotes = {
+            start1: "Lakshita, you're the reason I believe in magic! ✨",
+            start2: "Every moment with you feels like a dream come true, Lakshtuu! 💭",
+            start3: "You light up my world in ways you can't even imagine! 🌟",
+            rose1: "Just like a rose needs sunlight, I need your smile to brighten my day! 🌹",
+            rose2: "You're more beautiful than a garden full of roses, Lakshita! 💐",
+            propose1: "If I could, I would choose you over and over again, Lakshtuu! 💍",
+            propose2: "You're not just special, you're extraordinary in every way! ✨",
+            choco1: "You're the sweetest thing that ever happened to me! 🍫",
+            choco2: "Life with you is like an endless box of chocolates - always sweet! 🍬",
+            teddy1: "Your hugs feel like home, Lakshita! 🏠",
+            teddy2: "I could cuddle with you forever and never get tired! 🧸",
+            promise1: "I promise to make you smile every single day, Lakshtuu! 😊",
+            promise2: "You have my heart, today and always! ❤️",
+            hug1: "This virtual hug comes with unlimited love attached! 🤗",
+            hug2: "If I could hug you right now, I would never let go! 💕",
+            kiss1: "Every kiss I send you carries a thousand feelings! 💋",
+            kiss2: "You deserve all the love and kisses in the world, Lakshita! 😘",
+            val1: "Thank you for being YOU - perfectly imperfect and absolutely amazing! 🌟",
+            val2: "My favorite place is wherever you are, Lakshtuu! 💖",
+            val3: "Forever and always, you'll be my Valentine! 💕"
+        };
+
+        // Sound Effects
+        function playSound(frequency, duration, type = 'sine') {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = type;
+            
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+            
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + duration);
+        }
+
+        function playKissSound() {
+            playSound(800, 0.3, 'sine');
+            setTimeout(() => playSound(1000, 0.2, 'sine'), 150);
+        }
+
+        function playHugSound() {
+            playSound(400, 0.5, 'triangle');
+        }
+
+        function playHeartSound() {
+            playSound(600, 0.3, 'sine');
+        }
+
+        function playClickSound() {
+            playSound(500, 0.1, 'square');
+        }
+
+        // Page navigation
+        const showPage = (name) => {
+            document.querySelectorAll(".page").forEach(page => page.classList.remove("is-active"));
+            const target = document.querySelector(`[data-page="${name}"]`);
+            if (target) {
+                target.classList.add("is-active");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Create floating hearts on special pages
+                if (['rose', 'valentine', 'kiss', 'hug'].includes(name)) {
+                    createFloatingHearts();
+                }
+            }
+        };
+
+        // Character interactions
+        function clickCharacter(character, page) {
+            playClickSound();
+            const container = document.getElementById(page + 'Chars');
+            
+            // Remove previous animations
+            container.classList.remove('hug-animation', 'kiss-animation', 'wave-animation');
+            
+            // Force reflow to restart animation
+            void container.offsetWidth;
+            
+            // Apply animation based on page
+            if (page === 'hug') {
+                playHugSound();
+                container.classList.add('hug-animation');
+                createMultipleHeartReactions();
+            } else if (page === 'kiss') {
+                playKissSound();
+                container.classList.add('kiss-animation');
+                createMultipleHeartReactions();
+            } else {
+                container.classList.add('wave-animation');
+                playHeartSound();
+                createHeartReaction(character);
+            }
+            
+            // Remove animation after completion
+            setTimeout(() => {
+                container.classList.remove('hug-animation', 'kiss-animation', 'wave-animation');
+            }, 2000);
+        }
+
+        // Create heart reaction
+        function createHeartReaction(character) {
+            const container = document.querySelector('.is-active .characters-container');
+            
+            const hearts = ['💖', '💗', '💓', '💞', '💕'];
+            const heart = document.createElement('div');
+            heart.className = 'heart-reaction';
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = (character === 'male' ? '25%' : '70%');
+            heart.style.top = '30%';
+            
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 2000);
+        }
+
+        // Create multiple heart reactions
+        function createMultipleHeartReactions() {
+            const container = document.querySelector('.is-active .characters-container');
+            const hearts = ['💖', '💗', '💓', '💞', '💕', '❤️', '💘'];
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-reaction';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = (30 + Math.random() * 40) + '%';
+                    heart.style.top = (20 + Math.random() * 40) + '%';
+                    
+                    container.appendChild(heart);
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 200);
+            }
+        }
+
+        // Floating hearts animation
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['💖', '💗', '💓', '💞', '💕', '💘', '❤️'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 6000);
+                }, i * 300);
+            }
+        }
+
+        // Love notes
+        document.querySelectorAll('.love-note-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                playHeartSound();
+                const noteId = this.dataset.note;
+                const noteContent = loveNotes[noteId];
+                
+                document.getElementById('loveNoteContent').innerHTML = `
+                    <div style="text-align: center; margin-bottom: 20px; font-size: 50px;">💌</div>
+                    <p style="font-family: 'Patrick Hand', cursive; font-size: 1.4rem; line-height: 1.8; color: var(--pink-dark); text-align: center;">
+                        ${noteContent}
+                    </p>
+                `;
+                
+                document.getElementById('loveNotePopup').classList.add('active');
+                document.getElementById('overlay').classList.add('active');
+            });
+        });
+
+        document.getElementById('closeNote').addEventListener('click', function() {
+            document.getElementById('loveNotePopup').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('loveNotePopup').classList.remove('active');
+            this.classList.remove('active');
+        });
+
+        // Music toggle
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            if (musicPlaying) {
+                this.textContent = '🎵';
+                musicPlaying = false;
+            } else {
+                this.textContent = '🔇';
+                musicPlaying = true;
+            }
+        });
+
+        // Event delegation for buttons
+        document.addEventListener("click", (event) => {
+            const targetButton = event.target.closest("[data-target]");
+            if (targetButton) {
+                playClickSound();
+                showPage(targetButton.dataset.target);
+                return;
+            }
+
+            const nextButton = event.target.closest("[data-next]");
+            if (nextButton) {
+                playClickSound();
+                showPage(nextButton.dataset.next);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                const nextBtn = document.querySelector('.page.is-active [data-next]');
+                if (nextBtn) {
+                    e.preventDefault();
+                    nextBtn.click();
+                }
+            }
+        });
+
+        // Initial hearts animation
+        window.addEventListener('load', () => {
+            setTimeout(createFloatingHearts, 500);
+        });
+    </script>
+</body>
+</html>
