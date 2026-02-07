@@ -27,7 +27,7 @@
 
         body {
             font-family: "Quicksand", sans-serif;
-            background: linear-gradient(135deg, #ffdde1 0%, #f6d9de 50%, #ffc9d4 100%);
+            background: linear-gradient(135deg, #9d174d 0%, #831843 50%, #7c2d5e 100%);
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -1400,7 +1400,7 @@
     </div>
 
     <script>
-        // Sound System
+        // Enhanced Sound System with Valentine's themed sounds
         class SoundSystem {
             constructor() {
                 this.soundsEnabled = true;
@@ -1411,65 +1411,31 @@
             }
 
             init() {
-                // Preload sound data
                 this.preloadSounds();
-                
-                // Initialize Web Audio API if available
                 if (window.AudioContext || window.webkitAudioContext) {
                     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 }
             }
 
             preloadSounds() {
-                // Base64 encoded short audio tones for different effects
+                // Valentine's themed sounds
                 this.soundCache = {
-                    click: this.createBeep(800, 0.1),
-                    heart: this.createBeep(600, 0.2),
-                    kiss: this.createKissSound(),
-                    hug: this.createHugSound(),
-                    jump: this.createJumpSound(),
-                    sparkle: this.createSparkleSound(),
-                    celebration: this.createCelebrationSound(),
-                    sad: this.createSadSound(),
-                    woosh: this.createWooshSound(),
-                    magic: this.createMagicSound()
+                    click: { frequencies: [800, 1000], durations: [0.1, 0.05], type: 'triangle' },
+                    heart: { frequencies: [600, 800, 600], durations: [0.1, 0.1, 0.1], type: 'sine' },
+                    kiss: { frequencies: [1200, 1000, 800], durations: [0.08, 0.1, 0.15], type: 'triangle' },
+                    hug: { frequencies: [200, 250, 300, 280], durations: [0.15, 0.1, 0.2, 0.1], type: 'sine' },
+                    jump: { frequencies: [500, 300, 600, 400], durations: [0.1, 0.15, 0.1, 0.1], type: 'triangle' },
+                    sparkle: { frequencies: [1500, 1800, 2000, 1800], durations: [0.05, 0.05, 0.05, 0.05], type: 'triangle' },
+                    celebration: { frequencies: [659.25, 783.99, 880.00, 987.77, 1046.50], durations: [0.15, 0.15, 0.15, 0.15, 0.3], type: 'sine' },
+                    sad: { frequencies: [392.00, 349.23, 329.63], durations: [0.3, 0.3, 0.4], type: 'sine' },
+                    woosh: { frequencies: [400, 800, 400], durations: [0.1, 0.1, 0.1], type: 'triangle' },
+                    magic: { frequencies: [1000, 1200, 1400, 1600, 1400, 1200], durations: [0.08, 0.08, 0.08, 0.08, 0.08, 0.08], type: 'sine' },
+                    rose: { frequencies: [523.25, 659.25, 783.99], durations: [0.2, 0.2, 0.3], type: 'sine' },
+                    chocolate: { frequencies: [400, 600, 500, 700], durations: [0.1, 0.1, 0.1, 0.2], type: 'triangle' },
+                    teddy: { frequencies: [261.63, 329.63, 392.00], durations: [0.25, 0.25, 0.3], type: 'sine' },
+                    promise: { frequencies: [523.25, 587.33, 659.25, 698.46], durations: [0.2, 0.2, 0.2, 0.4], type: 'sine' },
+                    valentine: { frequencies: [659.25, 783.99, 880.00, 987.77, 1046.50], durations: [0.15, 0.15, 0.15, 0.15, 0.3], type: 'sine' }
                 };
-            }
-
-            createBeep(frequency, duration) {
-                return { frequency, duration, type: 'beep' };
-            }
-
-            createKissSound() {
-                return { frequencies: [1200, 800], durations: [0.1, 0.15], type: 'multi' };
-            }
-
-            createHugSound() {
-                return { frequencies: [300, 400, 350], durations: [0.2, 0.15, 0.1], type: 'multi' };
-            }
-
-            createJumpSound() {
-                return { frequencies: [500, 300, 600], durations: [0.1, 0.15, 0.1], type: 'multi' };
-            }
-
-            createSparkleSound() {
-                return { frequencies: [1500, 1800, 1200], durations: [0.05, 0.05, 0.05], type: 'multi' };
-            }
-
-            createCelebrationSound() {
-                return { frequencies: [600, 800, 1000, 800, 600], durations: [0.08, 0.08, 0.08, 0.08, 0.08], type: 'multi' };
-            }
-
-            createSadSound() {
-                return { frequencies: [300, 280, 260], durations: [0.3, 0.3, 0.3], type: 'multi' };
-            }
-
-            createWooshSound() {
-                return { frequencies: [400, 800, 400], durations: [0.1, 0.1, 0.1], type: 'multi' };
-            }
-
-            createMagicSound() {
-                return { frequencies: [1000, 1200, 1400, 1200], durations: [0.1, 0.1, 0.1, 0.1], type: 'multi' };
             }
 
             playSound(soundName) {
@@ -1481,33 +1447,12 @@
                     this.audioContext.resume();
                 }
 
-                if (sound.type === 'beep') {
-                    this.playBeep(sound.frequency, sound.duration);
-                } else if (sound.type === 'multi') {
-                    this.playMultiTone(sound.frequencies, sound.durations);
+                if (this.audioContext) {
+                    this.playMultiTone(sound.frequencies, sound.durations, sound.type);
                 }
             }
 
-            playBeep(frequency, duration) {
-                if (!this.audioContext) return;
-
-                const oscillator = this.audioContext.createOscillator();
-                const gainNode = this.audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(this.audioContext.destination);
-                
-                oscillator.frequency.value = frequency;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
-                
-                oscillator.start(this.audioContext.currentTime);
-                oscillator.stop(this.audioContext.currentTime + duration);
-            }
-
-            playMultiTone(frequencies, durations) {
+            playMultiTone(frequencies, durations, type = 'sine') {
                 if (!this.audioContext || frequencies.length !== durations.length) return;
 
                 let currentTime = this.audioContext.currentTime;
@@ -1520,10 +1465,10 @@
                     gainNode.connect(this.audioContext.destination);
                     
                     oscillator.frequency.value = freq;
-                    oscillator.type = index % 2 === 0 ? 'sine' : 'triangle';
+                    oscillator.type = type;
                     
-                    gainNode.gain.setValueAtTime(0.2, currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + durations[index]);
+                    gainNode.gain.setValueAtTime(0.15, currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, currentTime + durations[index]);
                     
                     oscillator.start(currentTime);
                     oscillator.stop(currentTime + durations[index]);
@@ -1778,6 +1723,14 @@
         // Enhanced bear interactions
         function interactBears(day, type = 'wave') {
             soundSystem.playSound('click');
+            
+            // Play day-specific sounds
+            if (day === 'rose') soundSystem.playSound('rose');
+            else if (day === 'chocolate') soundSystem.playSound('chocolate');
+            else if (day === 'teddy') soundSystem.playSound('teddy');
+            else if (day === 'promise') soundSystem.playSound('promise');
+            else if (day === 'valentine') soundSystem.playSound('valentine');
+            
             const stage = document.getElementById(day + 'Stage');
             
             // Reset animations
@@ -1920,6 +1873,7 @@
 
         // Page navigation with transition
         function showPage(name) {
+            soundSystem.playSound('click');
             animationSystem.showPageTransition(['💖', '💕', '💝', '🎉'][Math.floor(Math.random() * 4)]);
             
             setTimeout(() => {
@@ -1928,6 +1882,16 @@
                 if (target) {
                     target.classList.add("is-active");
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Play page-specific sound
+                    if (name === 'rose') soundSystem.playSound('rose');
+                    else if (name === 'propose') soundSystem.playSound('magic');
+                    else if (name === 'chocolate') soundSystem.playSound('chocolate');
+                    else if (name === 'teddy') soundSystem.playSound('teddy');
+                    else if (name === 'promise') soundSystem.playSound('promise');
+                    else if (name === 'hug') soundSystem.playSound('hug');
+                    else if (name === 'kiss') soundSystem.playSound('kiss');
+                    else if (name === 'valentine') soundSystem.playSound('valentine');
                     
                     // Create floating hearts on specific pages
                     if (['rose', 'valentine', 'kiss', 'hug', 'propose'].includes(name)) {
@@ -2135,6 +2099,7 @@
             // Initial celebration
             setTimeout(() => {
                 animationSystem.launchConfetti(30);
+                soundSystem.playSound('valentine');
             }, 1000);
         });
 
